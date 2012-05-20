@@ -1,0 +1,13 @@
+%h2 Welcome Back!
+%h3 Your Sources
+%ul
+  - current_user.sources.each do |source|
+    %li= link_to source.title, source
+  %li= link_to "Create A Source", new_source_path
+
+%h3 Your Subscriptions
+%ul
+  - current_user.subscriptions.each do |subscription|
+    %li= link_to subscription.title, subscription
+  %li= link_to "Create A Subscription", new_subscription_path
+
