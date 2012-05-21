@@ -8,6 +8,8 @@ Edcal::Application.routes.draw do
       :as => 'disconnect_omniauth_provider'
   end
 
+  match 'bookmarklet' => "users#bookmarklet"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

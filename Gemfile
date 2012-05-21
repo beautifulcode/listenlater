@@ -41,6 +41,7 @@ end
 group :development, :test do
   gem 'mysql2'
   gem "rack-bridge"
+  gem "quiet_assets"
 end
 
 group :test do

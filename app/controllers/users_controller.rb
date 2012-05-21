@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   def show
   end
 
-
+  def bookmarklet
+  end
 
   def disconnect_omniauth_provider
     provider = params[:provider]

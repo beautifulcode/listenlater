@@ -2,8 +2,8 @@
 %h3 Thanks for signing up, now let's get started finding something to listen to:
 
 %ol
-  %li Get the Bookmarklet
-  %li Bookmark listenlaterapp.com on your mobile device
+  %li Get the #{link_to "&#9835; Listen Later &#9835;".html_safe, bookmarklet_url(:format => :js), :class => 'label', :title => "Drag me to your bookmarks!"} Bookmarklet
+  %li Bookmark #{link_to "listenlaterapp.com"} on your mobile device
   %li Find a "Source". This could be a podcast, song or any mp3 file on the web
   %li Subscribe to Podcasts by adding a new "Subscription"
   %li Listen!

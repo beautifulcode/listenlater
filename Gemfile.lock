@@ -121,6 +121,8 @@ GEM
     pg (0.13.2)
     pg (0.13.2-x86-mingw32)
     polyglot (0.3.3)
+    quiet_assets (1.0.1)
+      railties (~> 3.1)
     rack (1.4.1)
     rack-bridge (0.6.1)
       jaws (= 0.6.0)
@@ -205,6 +207,7 @@ DEPENDENCIES
   omniauth-facebook
   omniauth-twitter
   pg
+  quiet_assets
   rack-bridge
   rack-superfeedr
   rails (= 3.2.3)
