@@ -1,6 +1,23 @@
 class SourcesController < ApplicationController
   respond_to :json, :html
 
+
+  def recent
+   index 
+  end
+
+  def popular
+   index 
+  end
+
+  def suggested
+   index 
+  end
+
+  def new
+    
+  end
+
   def create
     @source = Source.new(params[:source])
     @source.save!

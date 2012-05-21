@@ -6,9 +6,6 @@
     = stylesheet_link_tag    "application"
     = yield(:css_includes)
 
-    = javascript_include_tag "application"
-    = yield(:js_includes)
-    
     = csrf_meta_tags
   %body
     = render :partial => 'shared/header'
@@ -16,5 +13,47 @@
       - [:success, :error, :message].each do |msg|
         - if flash[msg]
           %div{:class => "alert-message #{msg.to_s}"}= flash[msg]
+      .row-fluid
+        #side.span3
+          %ul.nav.nav-list
+            %li.nav-header Home
+            %li.nav-header Sources
+            %li
+              = link_to recent_sources_path do
+                %i.icon-library
+                Recent Sources
+            %li
+              = link_to popular_sources_path do
+                %i.icon-star
+                Popular Sources
+            %li
+              = link_to suggested_sources_path do
+                %i.icon-vote
+                Suggested Sources
 
-      = yield
+
+            %li
+              = link_to new_source_path do
+                %i.icon-plus
+                Create Source
+
+            %li.nav-header Subscriptions
+            %li
+              = link_to recent_subscriptions_path do
+                %i.icon-library
+                Recent Subscriptions
+            %li
+              = link_to popular_subscriptions_path do
+                %i.icon-star
+                Popular Subscriptions
+            %li
+              = link_to suggested_subscriptions_path do
+                %i.icon-vote
+                Suggested Subscriptions
+
+
+        #main.span9
+          = yield
+
+    = javascript_include_tag "application"
+    = yield(:js_includes)

@@ -10,6 +10,23 @@ Edcal::Application.routes.draw do
 
   match 'bookmarklet' => "users#bookmarklet"
 
+  resources :sources do
+    collection do
+      get 'recent'
+      get 'suggested'
+      get 'popular'
+    end
+  end
+
+  resources :subscriptions do
+    collection do
+      get 'recent'
+      get 'suggested'
+      get 'popular'
+    end
+  end
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

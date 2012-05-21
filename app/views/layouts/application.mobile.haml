@@ -6,9 +6,6 @@
     = stylesheet_link_tag    "application"
     = yield(:css_includes)
 
-    = javascript_include_tag "application"
-    = yield(:js_includes)
-    
     = csrf_meta_tags
   %body.mobile
     = render :partial => 'shared/header'
@@ -18,3 +15,6 @@
           %div{:class => "alert-message #{msg.to_s}"}= flash[msg]
       %h2 MOBILE
       = yield
+    = javascript_include_tag "application"
+    = yield(:js_includes)
+ 

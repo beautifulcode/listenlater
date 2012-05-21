@@ -1,0 +1,10 @@
+.hero-unit
+  %h1 New Source
+  %p A source is basically a link to an audio file with a title
+= simple_form_for :source, :html => {:class => 'form-horizontal' } do |form|
+  = form.input :title
+  = form.input :url
+  = form.input :subscription
+  .btn-group
+    = form.button :submit, :class => "btn-primary"
+    = link_to "Cancel", :back, :class => "btn"

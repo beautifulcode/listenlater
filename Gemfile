@@ -31,6 +31,7 @@ gem 'omniauth-twitter'
 gem 'jquery-rails'
 
 gem 'haml-rails'
+gem 'simple_form'
 
 gem 'chronic'
 
