@@ -18,6 +18,8 @@ Edcal::Application.routes.draw do
     end
   end
 
+  post 'bookmark', :controller => :sources, :action => :create
+
   resources :subscriptions do
     collection do
       get 'recent'

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  respond_to :js, :json, :html
   
   before_filter :authenticate_user!
 
@@ -6,6 +7,7 @@ class UsersController < ApplicationController
   end
 
   def bookmarklet
+    render :layout => false
   end
 
   def disconnect_omniauth_provider
