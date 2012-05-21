@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Edcal::Application.load_tasks
+ListenLater::Application.load_tasks

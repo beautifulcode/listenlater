@@ -1,4 +1,4 @@
-Edcal::Application.routes.draw do
+ListenLater::Application.routes.draw do
 
   match '/', :controller => :pages, :action => :home
 

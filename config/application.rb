@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-module Edcal
+module ListenLater
   class Application < Rails::Application
 
     config.middleware.use Rack::Superfeedr, { :host => 'listenlaterapp.oncloud.org', :login => 'listenlater', :password => 'glennsk8'} do |superfeedr|
