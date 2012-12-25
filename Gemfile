@@ -6,11 +6,17 @@ gem 'rails', '3.2.3'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
 gem 'mysql2'
-
 gem 'json'
 gem 'rack-superfeedr'
-gem 'haml', '~> 3.2.0.alpha.10'
-
+gem 'haml', '~> 3.2.0.rc.2'
+gem 'sass'
+gem 'devise'
+gem 'omniauth-facebook'
+gem 'omniauth-twitter'
+gem 'jquery-rails'
+gem 'haml-rails'
+gem 'simple_form'
+gem 'chronic'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -23,17 +29,6 @@ group :assets do
 
   gem 'uglifier', '>= 1.0.3'
 end
-
-gem 'devise'
-gem 'omniauth-facebook'
-gem 'omniauth-twitter'
-
-gem 'jquery-rails'
-
-gem 'haml-rails'
-gem 'simple_form'
-
-gem 'chronic'
 
 group :production do
   gem 'pg'
@@ -48,6 +43,7 @@ end
 group :test do
   gem 'factory_girl_rails'
   gem 'capybara'
+  gem 'rspec-rails'
 end
 
 # To use ActiveModel has_secure_password

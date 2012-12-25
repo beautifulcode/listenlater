@@ -22,9 +22,10 @@ ActiveRecord::Schema.define(:version => 20120509072814) do
   end
 
   create_table "sources", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "subscription_id"
     t.string   "title"
     t.string   "url"
-    t.integer  "subscription_id"
     t.datetime "created_at",      :null => false
     t.datetime "updated_at",      :null => false
   end
