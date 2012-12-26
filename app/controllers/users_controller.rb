@@ -10,6 +10,9 @@ class UsersController < ApplicationController
     render :layout => false
   end
 
+  def welcome
+  end
+
   def disconnect_omniauth_provider
     provider = params[:provider]
     if Devise.omniauth_providers.include? provider.to_sym

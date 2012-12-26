@@ -8,6 +8,7 @@ ListenLater::Application.routes.draw do
       :as => 'disconnect_omniauth_provider'
   end
 
+  match 'welcome' => "users#welcome"
   match 'bookmarklet' => "users#bookmarklet"
 
   resources :sources do
