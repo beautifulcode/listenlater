@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "Signing in" do
   before do
-    @user = FactoryGirl.create :user
+    @user = FactoryGirl.create :user, :last_sign_in_at => 1.day.ago
   end
 
   it "allows me to signin via link on the homepage" do

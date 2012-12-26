@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
   end
 
   def previously_logged_in
-    current_user.last_sign_in_at != current_user.current_sign_in_at
+    current_user.last_sign_in_at < current_user.current_sign_in_at
   end
 
 

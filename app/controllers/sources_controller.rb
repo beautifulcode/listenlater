@@ -30,6 +30,7 @@ class SourcesController < ApplicationController
 
   def show
     @source = Source.find(params[:id])
+    @sources = current_user.sources || Source.recent
     respond_with @source
   end
 
