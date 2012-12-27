@@ -11,6 +11,10 @@ ListenLater::Application.routes.draw do
   match 'welcome' => "users#welcome"
   match 'bookmarklet' => "users#bookmarklet"
 
+  resources :users do
+    resources :sources
+  end
+
   resources :sources do
     collection do
       get 'recent'

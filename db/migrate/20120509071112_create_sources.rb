@@ -8,5 +8,7 @@ class CreateSources < ActiveRecord::Migration
 
       t.timestamps
     end
+
+    add_index :sources, :user_id
   end
 end

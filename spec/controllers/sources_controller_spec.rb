@@ -5,7 +5,21 @@ describe SourcesController do
   describe "when logged in" do
 
     before do
+      @user = FactoryGirl.create :user
+      @source = FactoryGirl.create :source, :user => @user
       logout
+    end
+
+    describe "GET to :show" do
+      it "can route to show" do
+        get :show, :id => @source.to_param
+        response.should be_success
+      end
+
+      it "can be nested under a user" do
+        get :show, :id => @source.to_param, :user_id => @user.to_param
+        response.should be_success
+      end
     end
 
     describe "POST to :create" do

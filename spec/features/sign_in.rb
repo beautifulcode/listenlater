@@ -6,7 +6,7 @@ describe "Signing in" do
     @user = FactoryGirl.create :user, :last_sign_in_at => 1.day.ago
   end
 
-  it "allows me to signin via link on the homepage" do
+  xit "allows me to signin via link on the homepage" do
     visit '/'
     click_link 'email_sign_in'
     fill_in 'Email', :with => @user.email

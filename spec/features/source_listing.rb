@@ -20,14 +20,4 @@ describe "Listing various sources" do
     page.has_css? '.listened'
   end
 
-
-
-  def sign_in(user)
-    visit '/'
-    click_link 'email_sign_in'
-    fill_in 'Email', :with => user.email
-    fill_in 'user_password', :with => 'abc123'
-    click_button 'Sign in'
-  end
-
 end
