@@ -15,6 +15,7 @@
 #= require underscore
 #= require backbone
 #= require jquery 
+#= require jquery_ujs
 #= require soundmanager2
 #= require page_as_playlist
 
