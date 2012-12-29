@@ -1,2 +1,2 @@
-.source{:class => source.state_classes}
-  = link_to source.title, source
+%li.source{:class => source.state_classes}
+  = link_to source.title, source.url, :rel => url_for(source)

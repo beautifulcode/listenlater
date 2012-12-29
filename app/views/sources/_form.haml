@@ -1,0 +1,7 @@
+= simple_form_for @source, :html => {:class => 'form-horizontal' } do |form|
+  = form.input :title
+  = form.input :url
+  = form.input :user, :as => :hidden, :value => current_user.id
+  .btn-group
+    = form.button :submit, :class => "btn-primary"
+    = link_to "Cancel", :back, :class => "btn"

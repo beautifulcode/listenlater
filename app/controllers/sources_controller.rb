@@ -15,13 +15,26 @@ class SourcesController < ApplicationController
   end
 
   def new
-    
+    @source = Source.new
   end
 
   def create
     @source = Source.new(params[:source])
     @source.save!
     respond_with @source
+  end
+
+  def edit
+    @source = Source.find(params[:id])
+  end
+
+  def update
+    @source = Source.find(params[:id])
+    if @source.update_attributes(params[:source])
+      redirect_to @source
+    else
+      render :template => 'new'
+    end
   end
 
   def index
