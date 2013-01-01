@@ -1,0 +1,6 @@
+.hero-unit
+  %h1= @subscription.title
+  %p #{@subscription.unlistened_source_count} New Sources of #{@subscription.sources.count}
+
+%ul.playlist
+  = render @subscription.sources

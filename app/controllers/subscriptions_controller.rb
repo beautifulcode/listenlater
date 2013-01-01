@@ -1,6 +1,10 @@
 class SubscriptionsController < ApplicationController
   respond_to :json, :html
 
+  def new
+   @subscription = Subscription.new
+  end
+
   def create
     @subscription = Subscription.new(params[:subscription])
     @subscription.save!

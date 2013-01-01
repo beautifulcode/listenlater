@@ -5,4 +5,8 @@ class Subscription < ActiveRecord::Base
   has_many :sources
 
   scope :recent, :limit => 30
+
+  def unlistened_source_count
+    sources.count
+  end
 end

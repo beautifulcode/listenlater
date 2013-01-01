@@ -1,0 +1,10 @@
+%ul.nav.nav-list
+  %li.nav-header Home
+  %li.nav-header Sources
+  = render :partial => 'sources/nav'
+
+  %li.nav-header Subscriptions
+  = render :partial => 'subscriptions/nav'
+
+  %li.nav-header Bookmarklet
+  = link_to "Listen Later", bookmarklet_string

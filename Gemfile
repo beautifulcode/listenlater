@@ -8,6 +8,7 @@ gem 'rails', '3.2.3'
 gem 'mysql2'
 gem 'json'
 gem 'rack-superfeedr'
+gem 'superfeedr-ruby'
 gem 'haml', '~> 3.2.0.rc.2'
 gem 'sass'
 gem 'devise'
@@ -38,6 +39,7 @@ group :development, :test do
   gem 'mysql2'
   gem "rack-bridge"
   gem "quiet_assets"
+  gem "capistrano"
 end
 
 group :test do
