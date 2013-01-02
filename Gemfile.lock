@@ -1,3 +1,14 @@
+PATH
+  remote: vendor/gems/rack-superfeedr-0.0.5
+  specs:
+    rack-superfeedr (0.0.5)
+      nokogiri
+      nokogiri
+      rack
+      rack
+      typhoeus
+      typhoeus
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -150,13 +161,6 @@ GEM
       rack (>= 0.4)
     rack-ssl (1.3.2)
       rack
-    rack-superfeedr (0.0.5)
-      nokogiri
-      nokogiri
-      rack
-      rack
-      typhoeus
-      typhoeus
     rack-test (0.6.2)
       rack (>= 1.0)
     rails (3.2.3)
@@ -245,7 +249,7 @@ DEPENDENCIES
   pg
   quiet_assets
   rack-bridge
-  rack-superfeedr
+  rack-superfeedr!
   rails (= 3.2.3)
   rspec-rails
   rvm-capistrano
