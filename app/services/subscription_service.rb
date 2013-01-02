@@ -1,16 +1,12 @@
 class SubscriptionService
 
-  def subscribe(url)
+  def self.subscribe(url)
     service.subscribe(url) do |result|
       puts "Subscribed to #{url}"  if result
     end
   end
 
-  def confirm
-   # Confirm receipt? 
-  end
-
-  def receive(notification)
+  def self.receive(notification)
     #service.on_notification do |notification|
       #puts "The feed #{notification.feed_url} has been fetched (#{notification.http_status}: #{notification.message_status}) and will be fecthed again in #{(notification.next_fetch - Time.now)/60} minutes."
       #notification.entries.each do |e|
@@ -19,15 +15,15 @@ class SubscriptionService
     #end
   end
 
-  def unsubscribe(url)
+  def self.unsubscribe(url)
     service.unsubscribe(url) do |result|
       puts "Unsubscribed to #{url}" if result
     end
   end
 
-    def service
-      #@client ||= Superfeedr
-      @client ||= ListenLater::Application::Superfeedr
-    end
+  def self.service
+    #@client ||= Superfeedr
+    @client ||= ListenLater::Application::Superfeedr
+  end
 
 end
