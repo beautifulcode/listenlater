@@ -1,3 +1,11 @@
+require 'bundler/capistrano'
+
+require "rvm/capistrano"
+set :rvm_ruby_string, 'ruby-1.9.3-p194@listenlater'
+set :rvm_type, :user
+
+load "deploy/assets"
+
 set :application, "listenlater"
 set :repository,  "git@github.com:beautifulcode/listenlater.git"
 

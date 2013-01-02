@@ -7,8 +7,8 @@ facebook:
     app_id: '327640947308580'
     secret_key: '0247d641efd95d7664782b7a021891c8'
   production:
-    app_id: '327640947308580'
-    secret_key: '0247d641efd95d7664782b7a021891c8'
+    app_id: '221506594571740'
+    secret_key: '74b22c356da3585d63fe6c5ef98d9895'
 #twitter:
   #test: 
     #consumer_key: the "consumer key" for the Twitter app you use for testing

@@ -40,6 +40,7 @@ group :development, :test do
   gem "rack-bridge"
   gem "quiet_assets"
   gem "capistrano"
+  gem 'rvm-capistrano'
 end
 
 group :test do
