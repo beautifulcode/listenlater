@@ -1,0 +1,45 @@
+= rack-superfeedr
+
+A gem that provides a rack middleware to interact with {Superfeedr}[http://superfeedr.com/]'s PubSubHubbub API. It let you *subscribe*, *unsubscribe* and *receive* incoming feed notifications.
+This should work with any Rack-compatible framework, as well as fully managed platforms like {Heroku}[http://www.heroku.com/].
+
+== Installing
+
+    gem install rack-superfeedr
+    
+== Using
+
+You first need a {subscriber account}[http://superfeedr.com/subscriber] with Superfeedr.
+
+*Warning* : your web application needs to be accessible for Superfeedr to send notifications. If you want to test it locally, we suggest you use it with a tool like {showoff}[https://showoff.io/] which will make your local port accessible from the outside world.
+
+=== Sinatra
+
+See the {example}[https://github.com/superfeedr/rack-superfeedr/blob/master/examples/sinatra_app.rb]... and {check the docs}[http://rubydoc.info/github/superfeedr/rack-superfeedr/master/Rack/Superfeedr] for more details. 
+
+=== Rails
+
+Tested with Rails 3.2, but should work with any Rails version that supports Rack.
+
+Install the gem (using bundle), and then in <code>config/application.rb</code>, inside the <code>class Application < Rails::Application</code> block, just add the following line.
+
+  config.middleware.use Rack::Superfeedr, { :host => DOMAIN, :login => SUPERFEEDR_LOGIN, :password => SUPERFEEDR_PASSWORD} do |superfeedr|
+    Superfeedr = superfeedr
+  end
+
+You can then access the Superfeedr object anywhere in your rails application with <code>YOUR_APP::Application::Superfeedr</code>.
+
+
+== Contributing
+ 
+* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
+* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
+* Fork the project
+* Start a feature/bugfix branch
+* Commit and push until you are happy with your contribution
+* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
+
+== Copyright
+
+Copyright (c) 2012 Superfeedr. See LICENSE.txt for further details.
+

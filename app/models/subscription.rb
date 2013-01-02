@@ -4,9 +4,22 @@ class Subscription < ActiveRecord::Base
   belongs_to :user
   has_many :sources
 
+  after_create :subscribe
+  after_destroy :unsubscribe
+
   scope :recent, :limit => 30
 
   def unlistened_source_count
     sources.count
   end
+  protected
+
+    def subscribe
+     SubscriptionService.subscribe(url) 
+    end
+
+    def unsubscribe
+     SubscriptionService.unsubscribe(url) 
+    end
+
 end

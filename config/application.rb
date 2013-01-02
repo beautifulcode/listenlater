@@ -12,8 +12,18 @@ end
 module ListenLater
   class Application < Rails::Application
 
-    config.middleware.use Rack::Superfeedr, { :host => 'listenlaterapp.oncloud.org', :login => 'listenlater', :password => 'glennsk8'} do |superfeedr|
+    config.middleware.use Rack::Superfeedr, { :host => 'listenlater.beautifulco.de', 
+                                              :login => 'listenlater', 
+                                              :password => 'glennsk8'
+                                            } do |superfeedr|
       Superfeedr = superfeedr
+      superfeedr.on_notification do |notification|
+        puts "The feed #{notification.feed_url} has been fetched (#{notification.http_status}: #{notification.message_status}) and will be fecthed again in #{(notification.next_fetch - Time.now)/60} minutes."
+        notification.entries.each do |e|
+          puts " - #{e.title} (#{e.link}) was published (#{e.published}) with #{e.unique_id} as unique id : \n #{e.summary} (#{e.chunk}/#{e.chunks})"
+        end
+      end
+
     end
 
     config.application_name = "ListenLater"
