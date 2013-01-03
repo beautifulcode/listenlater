@@ -15,11 +15,11 @@ class Subscription < ActiveRecord::Base
   protected
 
     def subscribe
-     SubscriptionService.subscribe(url) 
+     SubscriptionService.subscribe(url, id) 
     end
 
     def unsubscribe
-     SubscriptionService.unsubscribe(url) 
+     SubscriptionService.unsubscribe(url, id) 
     end
 
 end

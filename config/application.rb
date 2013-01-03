@@ -14,7 +14,8 @@ module ListenLater
 
     config.middleware.use Rack::Superfeedr, { :host => 'listenlater.beautifulco.de', 
                                               :login => 'listenlater', 
-                                              :password => 'glennsk8'
+                                              :password => 'glennsk8',
+                                              :format => :json
                                             } do |superfeedr|
       Superfeedr = superfeedr
       superfeedr.on_notification do |notification|
