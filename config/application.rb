@@ -18,8 +18,8 @@ module ListenLater
                                               :format => :json
                                             } do |superfeedr|
       Superfeedr = superfeedr
-      superfeedr.on_notification do |notification|
-        SubscriptionService.receive(notification)
+      superfeedr.on_notification do |notification, id|
+        SubscriptionService.receive(notification, id)
       end
 
     end
