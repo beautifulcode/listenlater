@@ -18,7 +18,9 @@ class SourcesController < ApplicationController
   end
 
   def index
-    @sources = Source.all
+    @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id]
+    @sources = @subscription.sources if @subscription
+    @sources ||= Source.all
     respond_with @sources
   end
 

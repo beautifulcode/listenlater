@@ -26,6 +26,7 @@ ListenLater::Application.routes.draw do
   post 'bookmark', :controller => :sources, :action => :create
 
   resources :subscriptions do
+    resources :sources
     collection do
       get 'recent'
       get 'suggested'
