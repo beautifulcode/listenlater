@@ -34,6 +34,12 @@
         "category",
         "topic"
       ],
+      "attachments": [
+        {
+          "url": "http://podcast.com/something.mp3",
+          "mimetype": "audio/mp3"
+        }
+      ],
       "links": [
         {
           "type": "text/html",
