@@ -9,7 +9,8 @@ class SubscriptionService
   def self.receive(payload, id)
     Rails.logger.info("The feed #{payload} has been fetched")
     subscription = Subscription.find(id)
-    notification['items'].each do |item|
+    payload['items'].each do |item|
+      return unless item['attachments']
       item['attachments'].each do |attachment|
         if attachment['mimetype'].include? 'audio'
           Rails.logger.info("Creating source for #{item['title']}")
