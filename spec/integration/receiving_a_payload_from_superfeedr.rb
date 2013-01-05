@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe "Receiving a JSON payload from superfeedr", :type => :controller do
+
   before do
     @user = FactoryGirl.create :user, :last_sign_in_at => 1.day.ago
     @subscription = FactoryGirl.create :subscription, :user => @user
@@ -17,6 +18,5 @@ describe "Receiving a JSON payload from superfeedr", :type => :controller do
     post "superfeedr/feed/#{@subscription.id}", @raw_json, 'CONTENT_TYPE' => 'application/json'
     @subscription.sources.size.should eq(1)
   end
-
 
 end
