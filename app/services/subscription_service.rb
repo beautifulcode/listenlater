@@ -24,8 +24,8 @@ class SubscriptionService
     end
   end
 
-  def self.unsubscribe(url)
-    service.unsubscribe(url) do |result|
+  def self.unsubscribe(url, id)
+    service.unsubscribe(url, id) do |result|
       puts "Unsubscribed to #{url}" if result
     end
   end
