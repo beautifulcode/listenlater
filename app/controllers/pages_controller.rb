@@ -1,6 +1,7 @@
 class PagesController < ApplicationController
 
   def home
+    render :text => params['hub.challenge'] if params['hub.challenge'] and return
     if current_user
       @sources = current_user.sources.recent
       tmpl = 'pages/welcome' if current_user.first_visit? 
