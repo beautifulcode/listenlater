@@ -12,8 +12,13 @@ end
 module ListenLater
   class Application < Rails::Application
 
-    config.middleware.use Rack::Superfeedr, { :host => 'listenlater.beautifulco.de', 
-                                              :login => 'listenlater', 
+    config.application_name = "ListenLater"
+    config.application_host = "listenlater.beautifulco.de"
+    config.subscription_service_username = "listenlater"
+    config.subscription_service_password = "glennsk8"
+
+    config.middleware.use Rack::Superfeedr, { :host => 'listenlater.beautifulco.de',
+                                              :login => 'listenlater',
                                               :password => 'glennsk8',
                                               :format => :json
                                             } do |superfeedr|
@@ -24,7 +29,6 @@ module ListenLater
 
     end
 
-    config.application_name = "ListenLater"
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
