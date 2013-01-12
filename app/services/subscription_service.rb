@@ -6,23 +6,44 @@ class SubscriptionService
     end
   end
 
+  # XML
   def self.receive(payload, id)
     Rails.logger.info("The feed #{payload} has been fetched")
     subscription = Subscription.find(id)
-    payload['items'].each do |item|
-      return unless item['attachments']
-      item['attachments'].each do |attachment|
-        if attachment['mimetype'].include? 'audio'
-          Rails.logger.info("Creating source for #{item['title']}")
+    payload.css('entry').each do |entry|
+      return unless entry.css('link[rel=enclosure]')
+      entry.css('link[rel=enclosure]').each do |attachment|
+        if attachment.css('type').include? 'audio'
+          Rails.logger.info("Creating source for #{entry.css('title')}")
 
           subscription.sources.create({
-            :title => item['title'], 
-            :url => attachment['permalinkUrl']
+            :title => entry.css('title'), 
+            :url => attachment.css('href')
           })
         end
       end
     end
   end
+
+  # JSON
+  #def self.receive(payload, id)
+  #  Rails.logger.info("The feed #{payload} has been fetched")
+  #  subscription = Subscription.find(id)
+  #  payload['items'].each do |item|
+  #    return unless item['attachments']
+  #    item['attachments'].each do |attachment|
+  #      if attachment['mimetype'].include? 'audio'
+  #        Rails.logger.info("Creating source for #{item['title']}")
+
+  #        subscription.sources.create({
+  #          :title => item['title'], 
+  #          :url => attachment['permalinkUrl']
+  #        })
+  #      end
+  #    end
+  #  end
+  #end
+
 
   def self.unsubscribe(url, id)
     service.unsubscribe(url, id) do |result|
