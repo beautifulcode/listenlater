@@ -13,12 +13,12 @@ class SubscriptionService
     payload.css('entry').each do |entry|
       return unless entry.css('link[rel=enclosure]')
       entry.css('link[rel=enclosure]').each do |attachment|
-        if attachment.css('type').include? 'audio'
+        if attachment.attribute('type').to_s.include? 'audio'
           Rails.logger.info("Creating source for #{entry.css('title')}")
 
           subscription.sources.create({
-            :title => entry.css('title'), 
-            :url => attachment.css('href')
+            :title => entry.css('title').first.text, 
+            :url => attachment.attribute('href').to_s
           })
         end
       end
