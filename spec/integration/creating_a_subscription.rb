@@ -3,7 +3,7 @@ require 'spec_helper'
 
 describe "creating a subscription" do
   before do
-    stub_request(:any, "www.superfeedr.com")
+    stub_subscription_service
     @user = FactoryGirl.create :user
     sign_in(@user)
     visit new_subscription_path

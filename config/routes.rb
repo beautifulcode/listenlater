@@ -1,5 +1,7 @@
 ListenLater::Application.routes.draw do
 
+  resources :listens
+
   match '/', :controller => :pages, :action => :home
 
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do

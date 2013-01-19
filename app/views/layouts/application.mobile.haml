@@ -14,7 +14,6 @@
       - [:success, :error, :message].each do |msg|
         - if flash[msg]
           %div{:class => "alert-message #{msg.to_s}"}= flash[msg]
-      %h2 MOBILE
       = yield
     = javascript_include_tag "application"
     = yield(:js_includes)

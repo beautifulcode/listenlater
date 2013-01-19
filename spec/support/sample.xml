@@ -1,0 +1,31 @@
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <status xmlns="http://superfeedr.com/xmpp-pubsub-ext" feed="http://feeds.5by5.tv/frequency">
+    <http code="200">Fetched (ring) 200 and parsed 1/60 entries</http>
+    <next_fetch>2013-01-11T18:36:11Z</next_fetch>
+    <entries_count_since_last_maintenance>1</entries_count_since_last_maintenance>
+    <period>900</period>
+    <last_fetch>2013-01-11T18:21:11Z</last_fetch>
+    <last_parse>2013-01-11T18:21:11Z</last_parse>
+    <last_maintenance_at>2013-01-10T20:08:18Z</last_maintenance_at>
+  </status>
+  <link title="The Frequency" rel="alternate" href="http://5by5.tv/frequency" type="text/html"/>
+  <title>The Frequency</title>
+  <updated>2013-01-11T17:15:00Z</updated>
+  <id>the-frequency-2013-01-11t17-15-00z</id>
+  <entry xmlns="http://www.w3.org/2005/Atom" xmlns:geo="http://www.georss.org/georss" xmlns:as="http://activitystrea.ms/spec/1.0/" xmlns:sf="http://superfeedr.com/xmpp-pubsub-ext" xml:lang="en-us">
+    <id>http://5by5.tv/frequency/60</id>
+    <published>2013-01-11T17:15:00Z</published>
+    <updated>2013-01-11T17:15:00Z</updated>
+    <title>The Frequency 60: 1080-Frickin-P</title>
+    <summary>Dan declares his favorite player as the Roku and Xerox CFO joins Apple.</summary>
+    <content>&lt;p&gt;Dan declares his favorite player as the Roku and Xerox CFO joins Apple.&lt;/p&gt;</content>
+    <link title="The Frequency 60: 1080-Frickin-P" rel="alternate" href="http://5by5.tv/frequency/60" type="text/html"/>
+    <link title="The Frequency 60: 1080-Frickin-P" rel="enclosure" href="http://d.ahoy.co/redirect.mp3/fly.5by5.tv/audio/broadcasts/frequency/2013/frequency-060.mp3" type="audio/mpeg"/>
+    <author>
+      <name>Haddie Cooke &amp; Dan Benjamin</name>
+      <uri/>
+      <email/>
+      <id>haddie-cooke-dan-benjamin</id>
+    </author>
+  </entry>
+</feed>

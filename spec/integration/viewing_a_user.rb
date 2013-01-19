@@ -3,6 +3,7 @@ require 'spec_helper'
 describe "Viewing a user" do
 
   before do
+    stub_subscription_service
     @user = FactoryGirl.create :user
     @source = FactoryGirl.create :source, :user => @user
     @subscription = FactoryGirl.create :subscription, :user => @user

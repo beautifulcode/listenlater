@@ -6,7 +6,7 @@ require 'rspec/autorun'
 
 require 'capybara/rails' 
 require 'capybara/dsl' 
-require 'webmock/rspec'
+#require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
@@ -51,12 +51,37 @@ RSpec.configure do |config|
     
   end
 
-  def sign_in(user)
+  def log_in(user)
+    #stub_request(:any, "127.0.0.1")
+    #stub_request(:get, "http://127.0.0.1:51677/__identify__").
+           #with(:headers => {'accept'=>'*/*', 'accept-encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3', 'user-agent'=>'ruby'}).
+           #to_return(:status => 200, :body => "", :headers => {})
+
+
     visit '/'
     click_link 'email_sign_in'
     fill_in 'Email', :with => user.email
     fill_in 'user_password', :with => 'abc123'
     click_button 'Sign in'
+  end
+
+  def sign_in(user)
+    log_in(user)
+  end
+
+  def stub_subscription_service
+   #stub_request(:post, "https://#{ListenLater::Application.config.subscription_service_username}:#{ListenLater::Application.config.subscription_service_password}@superfeedr.com/hubbub").
+         #with(:headers => {'Accept'=>'application/atom+xml', 'User-Agent'=>'Typhoeus - https://github.com/typhoeus/typhoeus'}).
+         #to_return(:status => 200, :body => "", :headers => {}) 
+
+   class << SubscriptionService
+
+     def subscribe(url, id)
+      true 
+     end
+
+   end
+
   end
 
 
