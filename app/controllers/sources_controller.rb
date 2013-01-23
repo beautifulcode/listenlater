@@ -3,24 +3,24 @@ class SourcesController < ApplicationController
   respond_to :json, :html
 
   def recent
-    @sources = Source.recent.include(:subscription)
+    @sources = Source.recent.includes(:subscription)
     respond_with @sources
   end
 
   def popular
-    @sources = Source.popular.include(:subscription)
+    @sources = Source.popular.includes(:subscription)
     respond_with @sources
   end
 
   def suggested
-    @sources = Source.suggested.include(:subscription)
+    @sources = Source.suggested.includes(:subscription)
     respond_with @sources
   end
 
   def index
     @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id]
     @sources = @subscription.sources if @subscription
-    @sources ||= Source.all
+    @sources ||= Source.all.includes(:subscription)
     respond_with @sources
   end
 
