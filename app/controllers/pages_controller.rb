@@ -9,7 +9,8 @@ class PagesController < ApplicationController
       tmpl ||= 'users/home'
       render tmpl
     else
-      render 'pages/home'
+      @sources = Source.recent
+      render 'pages/home', :layout => 'home'
     end
   end
 

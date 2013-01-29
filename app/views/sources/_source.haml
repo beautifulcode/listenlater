@@ -1,5 +1,8 @@
 %li.source{:class => source.state_classes}
-  = link_to source.url, :rel => url_for(source) do
-    - if source.subscription
-      == #{source.subscription.title} - 
-    = source.title
+  %dl
+    %dt.subscription-title
+      - if source.subscription
+        == #{source.subscription.title} - 
+    %dd.source-title
+      = link_to source.url, :rel => url_for(source) do
+        = source.title

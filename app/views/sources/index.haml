@@ -1,3 +1,6 @@
-- if @subscription
-  %h1= @subscription.title
-= render @sources
+.hero-unit
+  - if @subscription
+    %h1= @subscription.title
+
+%ul.playlist
+  = render @sources

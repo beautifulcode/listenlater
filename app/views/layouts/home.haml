@@ -1,0 +1,21 @@
+!!!
+%html
+  %head
+    %title= Rails.configuration.application_name
+    
+    = stylesheet_link_tag "application"
+    = yield(:css_includes)
+
+    = csrf_meta_tags
+  %body{:class => [controller_name, action_name]}
+    = render :partial => 'shared/header'
+    #content-container.container
+      - [:success, :error, :message].each do |msg|
+        - if flash[msg]
+          %div{:class => "alert-message #{msg.to_s}"}= flash[msg]
+      .row-fluid
+        #main
+          = yield
+
+    = javascript_include_tag "application"
+    = yield(:js_includes)

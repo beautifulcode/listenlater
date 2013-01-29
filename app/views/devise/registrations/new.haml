@@ -1,7 +1,18 @@
+.hero-unit
+  %h1 Start Listening
+  %p Sign up. Don't worry, it's easy like Sunday Morning.
+
+  %p
+    = link_to "Facebook", omniauth_authorize_path(resource_name, :facebook), :class => "btn btn-primary"
+    or
+    = link_to "Twitter", omniauth_authorize_path(resource_name, :twitter), :class => "btn btn-info"
+    or
+    = link_to "Email", "#email", :class => "btn"
+
 = form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
   = devise_error_messages!
   %fieldset
-    %legend Sign up
+    %legend Just provide your email and a password
     .clearfix
       = f.label :email
       .input
