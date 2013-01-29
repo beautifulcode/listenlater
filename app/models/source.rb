@@ -7,6 +7,7 @@ class Source < ActiveRecord::Base
   belongs_to :subscription
 
   scope :recent, :limit => 30
+  scope :ordered, :order => "created_at DESC"
 
   def state_classes
     class_array = []

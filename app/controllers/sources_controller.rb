@@ -3,17 +3,17 @@ class SourcesController < ApplicationController
   respond_to :json, :html
 
   def recent
-    @sources = Source.recent.includes(:subscription)
+    @sources = Source.recent.ordered.includes(:subscription)
     respond_with @sources
   end
 
   def popular
-    @sources = Source.popular.includes(:subscription)
+    @sources = Source.popular.ordered.includes(:subscription)
     respond_with @sources
   end
 
   def suggested
-    @sources = Source.suggested.includes(:subscription)
+    @sources = Source.suggested.ordered.includes(:subscription)
     respond_with @sources
   end
 
