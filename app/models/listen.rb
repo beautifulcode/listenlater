@@ -3,4 +3,11 @@ class Listen < ActiveRecord::Base
   validates_presence_of :source_id, :user_id
   belongs_to :user
   belongs_to :source
+
+  after_create :mark_source_as_listened
+
+  def mark_source_as_listened
+    source.mark_as_listened
+  end
+
 end

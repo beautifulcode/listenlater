@@ -37,20 +37,27 @@ describe ListensController do
 
     describe "POST to :create with valid params" do
 
-      it "can route a POST request" do
+      before do
         post :create, :listen => valid_listen_params, :format => :json
+      end
+
+      it "can route a POST request" do
         response.should be_success
       end
 
       it "creates a listen" do
-        post :create, :listen => valid_listen_params, :format => :json
         Listen.count.should == 1
       end
 
       it "creates a listen for the current user and appropriate source" do
-        post :create, :listen => valid_listen_params, :format => :json
-        Listen.last.user == @user
-        Listen.last.source == @source
+        Listen.last.user.should == @user
+        Listen.last.source.should == @source
+      end
+
+      it "sets the source as listened" do
+        @source.reload.listened.should == true
+        Source.listened.count.should == 1
+        Source.unlistened.count.should == 0
       end
 
     end

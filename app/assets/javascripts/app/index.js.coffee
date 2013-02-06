@@ -1,3 +1,6 @@
+#= require_self
+#= require_tree .
+
 soundManager.setup
   url: '/assets/soundmanager2/'
   onready: ->
@@ -10,5 +13,3 @@ window.App =
   Collections: {}
   Controllers: {}
   Views: {}
-
-#= require_tree .

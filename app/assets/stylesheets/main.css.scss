@@ -27,3 +27,16 @@ form {
   }
 }
 
+.playlist{
+  li.listened{
+    position: relative;
+    padding-left: 30px;
+    a{
+      opacity: 0.3; 
+      &:hover{opacity: 0.5;}
+    }
+
+    &:before{content: ''; position: absolute; top: -27px; left: -27px; border: 1em solid transparent; border-right-color: #fff;  height: 0; width: 0; -webkit-transform: rotate(45deg);}
+  }
+}
+

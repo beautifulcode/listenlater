@@ -18,13 +18,6 @@ class User < ActiveRecord::Base
     sources.empty?
   end
 
-
-
-
-
-
-
-
   def self.find_for_facebook_oauth(access_token, signed_in_resource = nil)
     data = access_token.extra.raw_info
     User.where(:facebook_id => data.id).first
@@ -55,4 +48,12 @@ class User < ActiveRecord::Base
     end
     save
   end
+end
+
+class NullUser
+
+  def id
+    'anonymous'
+  end
+
 end

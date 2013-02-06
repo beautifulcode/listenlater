@@ -11,4 +11,8 @@ module ApplicationHelper
   def noconflict_jquery_url
    "http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" 
   end
+
+  def active_user
+    current_user || NullUser.new
+  end
 end

@@ -4,5 +4,5 @@
       - if source.subscription
         == #{source.subscription.title} - 
     %dd.source-title
-      = link_to source.url, :rel => url_for(source) do
+      = link_to source.url, :rel => url_for(source), :'data-source-id' => source.id, :'data-user-id' => active_user.id do
         = source.title

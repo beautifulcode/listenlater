@@ -1,13 +1,15 @@
 class Source < ActiveRecord::Base
 
   attr_accessible :title, :url
-  attr_accessor :listened
 
   belongs_to :user
   belongs_to :subscription
+  has_many :listens
 
   scope :recent, :limit => 30
   scope :ordered, :order => "created_at DESC"
+  scope :unlistened, :conditions => {:listened => false}
+  scope :listened, :conditions => {:listened => true}
 
   def state_classes
     class_array = []
@@ -15,8 +17,9 @@ class Source < ActiveRecord::Base
     class_array
   end
 
-  def listened?
-    false
+  def mark_as_listened
+    self.listened ||= true
+    save if listened_changed?
   end
 
 end
