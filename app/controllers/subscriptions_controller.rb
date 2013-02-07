@@ -1,6 +1,14 @@
 class SubscriptionsController < ApplicationController
   respond_to :json, :html
 
+  def recent
+    index
+  end
+
+  def popular
+    index
+  end
+
   def new
    @subscription = Subscription.new
   end

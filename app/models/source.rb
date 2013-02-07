@@ -6,6 +6,8 @@ class Source < ActiveRecord::Base
   belongs_to :subscription
   has_many :listens
 
+  scope :popular, :limit => 30
+  scope :suggested, :limit => 30
   scope :recent, :limit => 30
   scope :ordered, :order => "created_at DESC"
   scope :unlistened, :conditions => {:listened => false}

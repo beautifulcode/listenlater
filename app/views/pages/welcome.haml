@@ -5,6 +5,8 @@
 %ol
   %li Get the #{link_to "&#9835; Listen Later &#9835;".html_safe, bookmarklet_string, :class => 'label', :title => "Drag me to your bookmarks!"} Bookmarklet
   %li Bookmark #{link_to "listenlaterapp.com"} on your mobile device
-  %li Find a "Source". This could be a podcast, song or any mp3 file on the web
-  %li Subscribe to Podcasts by adding a new "Subscription"
-  %li Listen!
+  %li Find a "#{link_to "Source", Source.first}". This could be a podcast, song or any mp3 file on the web
+  %li Subscribe to Podcasts by adding a new "#{link_to "Subscription", Subscription.first}"
+  %li link_to "Listen!", popular_sources_path
+
+= link_to "Click to Subscribe to 'The Frequency' on 5by5.tv", new_subscription_path, :class => "subscribable btn btn-primary", :data => {:title => "The Frequency", :url => "http://feeds.5by5.tv/frequency", :user => active_user.id}
