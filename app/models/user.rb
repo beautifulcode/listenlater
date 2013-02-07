@@ -18,14 +18,29 @@ class User < ActiveRecord::Base
     sources.empty?
   end
 
-  def self.find_for_facebook_oauth(access_token, signed_in_resource = nil)
-    data = access_token.extra.raw_info
-    User.where(:facebook_id => data.id).first
+  def self.find_for_facebook_oauth(auth, signed_in_resource = nil)
+    info = auth.extra.raw_info
+    user = User.where(:facebook_id => info.id).first
+    unless user
+      user = User.new
+      user.email = info.email
+      user.facebook_id = info.id
+      user.password = Devise.friendly_token[0,20]
+      user.save!
+    end
+    user
   end
 
-  def self.find_for_twitter_oauth(access_token, signed_in_resource = nil)
-    data = access_token
-    User.where(:twitter_id => data.uid).first
+  def self.find_for_twitter_oauth(auth, signed_in_resource = nil)
+    data = auth
+    user = User.where(:twitter_id => data.uid).first
+    unless user
+      user = User.new
+      user.twitter_id = data.uid
+      user.password = Devise.friendly_token[0,20]
+      user.save!
+    end
+    user
   end
 
   def self.new_with_session(params, session)
