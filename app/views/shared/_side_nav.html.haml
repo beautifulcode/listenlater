@@ -1,5 +1,4 @@
 %ul.nav.nav-list
-  %li.nav-header Home
   %li.nav-header Sources
   = render :partial => 'sources/nav'
 
@@ -7,4 +6,4 @@
   = render :partial => 'subscriptions/nav'
 
   %li.nav-header Bookmarklet
-  = link_to "Listen Later", bookmarklet_string
+  %li= link_to "Learn More", '/pages/bookmarklet'

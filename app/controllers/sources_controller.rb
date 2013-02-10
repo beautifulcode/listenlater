@@ -3,7 +3,7 @@ class SourcesController < ApplicationController
   respond_to :json, :html
 
   def recent
-    @sources = Source.recent.ordered.includes(:subscription)
+    @sources = current_user.recent_sources.paginate(:page => params[:page] || 1, :per_page => 20)
     respond_with @sources
   end
 
@@ -13,7 +13,7 @@ class SourcesController < ApplicationController
   end
 
   def suggested
-    @sources = Source.suggested.ordered.includes(:subscription)
+    @sources = current_user.suggested_sources.paginate(:page => params[:page] || 1, :per_page => 20)
     respond_with @sources
   end
 

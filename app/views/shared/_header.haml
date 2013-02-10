@@ -4,7 +4,8 @@
       %a.brand= Rails.configuration.application_name
       - if user_signed_in?
         %ul.nav
-          %li= link_to 'Something', '#'
+          %li= link_to 'Recent', '/sources/recent'
+          %li= link_to 'Popular', '/sources/popular'
         .pull-right
           %ul.nav
             %li= link_to current_user.email, edit_user_registration_path
@@ -13,5 +14,4 @@
         .pull-right
           %ul.nav
             %li=link_to 'Sign in', new_user_session_path, :id => 'email_sign_in'
-            %li=link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook), :id => 'facebook_sign_in'
             %li=link_to 'Sign up',new_registration_path(:user)

@@ -10,6 +10,15 @@ class User < ActiveRecord::Base
   has_many :sources
   has_many :subscriptions
 
+  def recent_sources
+    sources.recent.ordered.includes(:subscription)
+  end
+
+  def suggested_sources
+    sources.recent.ordered
+  end
+
+
   def first_visit?
     sign_in_count == 1
   end
