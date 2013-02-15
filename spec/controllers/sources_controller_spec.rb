@@ -34,8 +34,8 @@ describe SourcesController do
   describe "when logged in" do
 
     before do
-      user = FactoryGirl.create :user
-      login(user)
+      @user = FactoryGirl.create :user
+      login(@user)
     end
 
     describe "POST to :create" do
@@ -56,6 +56,16 @@ describe SourcesController do
       it "creates a source for the current user" do
         post :create, :source => valid_source_params
         Source.last.user == User.last
+      end
+
+      describe "callback from superfeedr with subscription id and no user" do
+
+        it "creates a source for the current user" do
+          subscription = FactoryGirl.create :subscription, :user => @user
+          post :create, :source => valid_source_params.except(:user_id).merge(:subscription_id => subscription.id)
+          Source.last.user == User.last
+        end
+
       end
 
     end
