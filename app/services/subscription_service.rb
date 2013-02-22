@@ -16,10 +16,13 @@ class SubscriptionService
         if attachment.attribute('type').to_s.include? 'audio'
           Rails.logger.info("Creating source for #{entry.css('title')}")
 
-          subscription.sources.create({
+          source = subscription.sources.new({
             :title => entry.css('title').first.text, 
             :url => attachment.attribute('href').to_s
           })
+
+          source.user = subscription.user
+          source.save
         end
       end
     end

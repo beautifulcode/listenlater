@@ -44,4 +44,9 @@ describe "Receiving a XML payload from superfeedr", :type => :controller do
     @subscription.sources.last.url.should eq('http://d.ahoy.co/redirect.mp3/fly.5by5.tv/audio/broadcasts/frequency/2013/frequency-060.mp3')
   end
 
+  it "assigns the source to the user" do
+    post "superfeedr/feed/#{@subscription.id}", @raw_xml, 'CONTENT_TYPE' => 'application/atom+xml'
+    Source.last.user.should == @user
+  end
+
 end
