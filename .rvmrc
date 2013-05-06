@@ -1,2 +1,2 @@
-rvm use 1.9.3-p194@listenlater --create
+rvm use 1.9.3@listenlater --create
 
