@@ -9,7 +9,7 @@ class PagesController < ApplicationController
       tmpl ||= 'users/home'
       render tmpl
     else
-      @sources = Source.recent.ordered.paginate(:page => 1, :per_page => 20)
+      @sources = Source.recent.ordered.paginate(:page => params[:page] || 1, :per_page => params[:per_page] || 20)
       render 'pages/home', :layout => 'home'
     end
   end
