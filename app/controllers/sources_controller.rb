@@ -36,7 +36,12 @@ class SourcesController < ApplicationController
   end
 
   def create
-    @source = Source.new(params[:source].except(:subscription_id))
+    if current_user
+      @source = current_user.sources.find_or_create_by_title_and_url(params[:source][:title],  params[:source][:url])
+    else
+      @source = Source.find_or_create_by_title_and_url(params[:source][:title],  params[:source][:url])
+    end
+
     if params[:subscription].present?
       if subscription = Subscription.find(params[:subscription_id])
         @source.subscription = subscription
