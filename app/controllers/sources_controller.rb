@@ -20,13 +20,13 @@ class SourcesController < ApplicationController
   def index
     @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id]
     @sources = @subscription.sources if @subscription
-    @sources ||= Source.all.includes(:subscription)
+    @sources ||= Source.includes(:subscription).all
     respond_with @sources
   end
 
   def show
     @source = Source.find(params[:id])
-    @sources = current_user.sources if current_user 
+    @sources = current_user.sources if current_user
     @sources ||= Source.recent
     respond_with @source
   end

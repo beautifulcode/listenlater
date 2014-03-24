@@ -14,7 +14,7 @@ set :scm, :git # You can set :scm explicitly or Capistrano will make an intellig
 
 #set :domain, "listenlater.beautifulco.de"
 set :user, 'deploy'
-set :domain, "beautifulco.de"
+set :domain, "listenlaterapp.com"
 
 role :web, domain                          # Your HTTP server, Apache/etc
 role :app, domain                          # This may be the same as your `Web` server
