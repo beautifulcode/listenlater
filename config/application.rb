@@ -9,6 +9,18 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+module YML
+  module Config
+    def self.load(file)
+      puts "Loading: 'config/services/#{file}.yml'"
+      config = YAML.load_file("config/services/#{file}.yml")[Rails.env]
+      config.with_indifferent_access
+    end
+  end
+end
+
+SUPERFEEDR_CONFIG = YML::Config.load('superfeedr')
+
 module ListenLater
   class Application < Rails::Application
 
