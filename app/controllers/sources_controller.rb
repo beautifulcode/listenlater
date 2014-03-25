@@ -26,8 +26,10 @@ class SourcesController < ApplicationController
 
   def show
     @source = Source.find(params[:id])
-    @sources = current_user.sources if current_user
-    @sources ||= Source.recent
+    source_base = current_user.try(:sources) || Source
+    @sources = source_base
+                     .ordered
+                     .paginate(:page => page, :per_page => per_page)
     respond_with @source
   end
 

@@ -25,4 +25,11 @@ class ApplicationController < ActionController::Base
     #end
   #end
 
+  def page
+    params[:page].present? ? params[:page].to_i : 1
+  end
+
+  def per_page
+    params[:per_page].present? ? params[:per_page].to_i : 20
+  end
 end
