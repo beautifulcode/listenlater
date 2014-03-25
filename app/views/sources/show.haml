@@ -1,9 +1,10 @@
-%h1 Source: #{@source.title} 
-
 .player
-  %a.play.button Play
-  %a.pause.button Pause
-  .title= @source.title
+  = link_to '', @source.url, :class => 'play'
+  .title
+    %b
+      = @source.subscription.title
+      = "Untitled" if @source.subscription.title.blank?
+    %span= @source.title
 
 %ul.playlist
   = render @sources

@@ -1,8 +1,10 @@
 %li.source{:class => source.state_classes}
   %dl
     %dt.subscription-title
+      = "Untitled" unless source.subscription
       - if source.subscription
-        == #{source.subscription.title} - 
+        == #{source.subscription.title}
     %dd.source-title
-      = link_to source.url, :rel => url_for(source), :'data-source-id' => source.id, :'data-user-id' => active_user.id do
+      = link_to source, :rel => url_for(source), :'data-source-id' => source.id, :'data-user-id' => active_user.id do
         = source.title
+  %span= source.created_at.to_s(:short)

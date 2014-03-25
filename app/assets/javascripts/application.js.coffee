@@ -17,7 +17,6 @@
 #= require backbone
 #= require jquery_ujs
 #= require soundmanager2
-#= require page_as_playlist
 
 #= require app
 

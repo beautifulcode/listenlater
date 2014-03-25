@@ -1,8 +1,4 @@
 .hero-unit
   %h1 New Subscription
   %p Keep up to date with fresh content pushed to you
-= simple_form_for @subscription do |form|
-  = form.input :title
-  = form.input :url, :hint => "RSS Feed Link - look for orange icon"
-  = form.button :submit, :class => "btn-primary"
-
+= render 'form'
