@@ -1,0 +1,19 @@
+#main{
+  @extend .span9;
+}
+
+#side{
+  @extend .span3;
+  margin-top: 100px;
+}
+
+.hero-unit{
+  /*background: image-url('tape.png') 50px 50px no-repeat;*/
+  /*padding-left: 200px;*/
+}
+
+.topbar {
+  position: static;
+}
+
+
