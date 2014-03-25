@@ -11,13 +11,15 @@ class SubscriptionService
     Rails.logger.info("The feed #{payload} has been fetched")
     subscription = Subscription.find(id)
     payload.css('entry').each do |entry|
+      Rails.logger.info("$$$$ Received for #{entry.inspect} $$$$")
       return unless entry.css('link[rel=enclosure]')
       entry.css('link[rel=enclosure]').each do |attachment|
         if attachment.attribute('type').to_s.include? 'audio'
           Rails.logger.info("Creating source for #{entry.css('title')}")
 
           source = subscription.sources.new({
-            :title => entry.css('title').first.text, 
+            :user_id => subscription.user_id,
+            :title => entry.css('title').first.text,
             :url => attachment.attribute('href').to_s
           })
 
@@ -39,7 +41,7 @@ class SubscriptionService
   #        Rails.logger.info("Creating source for #{item['title']}")
 
   #        subscription.sources.create({
-  #          :title => item['title'], 
+  #          :title => item['title'],
   #          :url => attachment['permalinkUrl']
   #        })
   #      end
