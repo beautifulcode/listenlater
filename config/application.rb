@@ -14,12 +14,12 @@ module ListenLater
 
     config.application_name = "ListenLater"
     config.application_host = "listenlater.beautifulco.de"
-    config.subscription_service_username = "listenlater"
-    config.subscription_service_password = "glennsk8"
+    config.subscription_service_username = SUPERFEEDR_CONFIG['username']
+    config.subscription_service_password = SUPERFEEDR_CONFIG['password']
 
-    config.middleware.use Rack::Superfeedr, { :host => 'listenlater.beautifulco.de',
-                                              :login => 'listenlater',
-                                              :password => 'glennsk8',
+    config.middleware.use Rack::Superfeedr, { :host => SUPERFEEDR_CONFIG['host'],
+                                              :login => SUPERFEEDR_CONFIG['username'],
+                                              :password => SUPERFEEDR_CONFIG['password'],
                                               :format => :json
                                             } do |superfeedr|
       Superfeedr = superfeedr
