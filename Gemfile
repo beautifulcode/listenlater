@@ -41,6 +41,10 @@ group :development, :test do
   gem "quiet_assets"
   gem "capistrano"
   gem 'rvm-capistrano'
+
+  # Can't use this as it conflicts with Listen Class
+  # https://github.com/guard/listen
+  #gem 'guard'
 end
 
 group :test do
