@@ -1,14 +1,14 @@
 development:
-  host: 'http://localhost:3000'
+  host: 'localhost:3000'
   username: 'listenlater'
   password: 'test'
 
 test:
-  host: 'http://localhost:3000'
+  host: 'localhost:3000'
   username: 'listenlater'
   password: 'test'
 
 production:
-  host: 'http://listenlaterapp.com'
+  host: 'listenlaterapp.com'
   username: 'listenlater'
   password: 'glennsk8'
