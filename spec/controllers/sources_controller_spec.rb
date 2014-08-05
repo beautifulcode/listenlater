@@ -1,6 +1,9 @@
 require 'spec_helper'
 
 describe SourcesController do
+  before do
+    stub_subscription_service
+  end
 
   describe "when logged in" do
 
@@ -75,7 +78,7 @@ describe SourcesController do
     {:url => 'http://mycoolsite.com/podcast.mp3'}
   end
 
-  def invalid_source_params 
+  def invalid_source_params
     {}
   end
 

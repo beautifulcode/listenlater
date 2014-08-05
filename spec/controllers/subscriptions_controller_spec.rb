@@ -2,6 +2,9 @@
 require 'spec_helper'
 
 describe SubscriptionsController do
+  before do
+    stub_subscription_service
+  end
 
   describe "when logged in" do
 
@@ -52,7 +55,7 @@ describe SubscriptionsController do
     {:url => 'http://mycoolsite.com/podcast.rss'}
   end
 
-  def invalid_subscription_params 
+  def invalid_subscription_params
     {}
   end
 
