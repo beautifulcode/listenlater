@@ -1,10 +1,13 @@
 .player
-  = link_to '', @source.url, :class => 'play'
+  = link_to 'Play', @source.url, :class => 'play'
   .title
-    %b
-      = @source.subscription.title
-      = "Untitled" if @source.subscription.title.blank?
-    %span= @source.title
+    - if @source.subscription
+      %b
+        = @source.subscription.title
+        = "Untitled" if @source.subscription.title.blank?
+      %span= @source.title
+    - else
+      %b= @source.title
 
 %ul.playlist
   = render @sources

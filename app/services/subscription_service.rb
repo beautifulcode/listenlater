@@ -18,7 +18,6 @@ class SubscriptionService
           Rails.logger.info("Creating source for #{entry.css('title')}")
 
           source = subscription.sources.new({
-            :user_id => subscription.user_id,
             :title => entry.css('title').first.text,
             :url => attachment.attribute('href').to_s
           })

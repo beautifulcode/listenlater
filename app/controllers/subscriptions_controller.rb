@@ -15,6 +15,7 @@ class SubscriptionsController < ApplicationController
 
   def create
     @subscription = Subscription.new(params[:subscription])
+    @subscription.user = current_user
     @subscription.save!
     respond_with @subscription
   end

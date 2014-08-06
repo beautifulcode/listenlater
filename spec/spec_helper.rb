@@ -4,13 +4,14 @@ require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
 require 'rspec/autorun'
 
-require 'capybara/rails' 
-require 'capybara/dsl' 
+require 'capybara/rails'
+require 'capybara/dsl'
 #require 'webmock/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # in spec/support/ and its subdirectories.
 Dir[Rails.root.join("spec/support/**/*.rb")].each {|f| require f}
+FakeWeb.allow_net_connect = %r[^https?://(localhost|127.0.0.1)]
 
 RSpec.configure do |config|
   # ## Mock Framework
@@ -40,15 +41,15 @@ RSpec.configure do |config|
   #     --seed 1234
   config.order = "random"
 
-  config.include(Capybara, :type => :integration) 
+  config.include(Capybara, :type => :integration)
   config.include Capybara::DSL
 
   def logout
-    
+
   end
 
   def login(user)
-    
+
   end
 
   def log_in(user)
@@ -72,12 +73,12 @@ RSpec.configure do |config|
   def stub_subscription_service
    #stub_request(:post, "https://#{ListenLater::Application.config.subscription_service_username}:#{ListenLater::Application.config.subscription_service_password}@superfeedr.com/hubbub").
          #with(:headers => {'Accept'=>'application/atom+xml', 'User-Agent'=>'Typhoeus - https://github.com/typhoeus/typhoeus'}).
-         #to_return(:status => 200, :body => "", :headers => {}) 
+         #to_return(:status => 200, :body => "", :headers => {})
 
    class << SubscriptionService
 
      def subscribe(url, id)
-      true 
+      true
      end
 
    end

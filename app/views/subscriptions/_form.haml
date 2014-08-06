@@ -1,5 +1,4 @@
 = simple_form_for @subscription do |form|
-  = form.hidden_field :user_id, :value => current_user.id if current_user
   = form.input :title
   = form.input :url, :hint => "RSS Feed Link - look for orange icon"
   = form.button :submit, :class => "btn-primary"

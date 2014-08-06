@@ -12,7 +12,7 @@ describe "Signing in" do
     fill_in 'Email', :with => @user.email
     fill_in 'user_password', :with => 'abc123'
     click_button 'Sign in'
-    current_path.should == '/'
+    current_path.should == '/welcome'
   end
 
 end
