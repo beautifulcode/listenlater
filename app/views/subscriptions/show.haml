@@ -2,5 +2,4 @@
   %h1= @subscription.title
   %p #{@subscription.unlistened_source_count} New Sources of #{@subscription.sources.count}
 
-%ul.playlist
-  = render @subscription.sources
+= link_to "View Sources", subscription_sources_path(@subscription)

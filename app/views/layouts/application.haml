@@ -8,13 +8,13 @@
     = yield(:css_includes)
 
     = csrf_meta_tags
-  %body.mobile
+  %body.mobile{:class => "#{params[:controller]} #{params[:action]}"}
+    = render :partial => 'shared/header'
     #content-container.container
       - [:success, :error, :message].each do |msg|
         - if flash[msg]
           %div{:class => "alert-message #{msg.to_s}"}= flash[msg]
       = yield
-    = render :partial => 'shared/header'
     = javascript_include_tag "application"
     = yield(:js_includes)
  

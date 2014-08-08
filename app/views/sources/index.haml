@@ -1,6 +1,4 @@
-.hero-unit
-  - if @subscription
-    %h1= @subscription.title
+= render 'subscriptions/detail' if @subscription
 
 %ul.playlist
   = render @sources

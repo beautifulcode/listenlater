@@ -19,7 +19,9 @@ class SourcesController < ApplicationController
 
   def index
     @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id]
-    @sources = @subscription.sources if @subscription
+    sources = @subscription.sources.ordered
+    sources = sources.where(state: params[:filter]) if params[:filter]
+    @sources = sources.paginate(:page => params[:page] || 1, :per_page => params[:per_page] || 20) if @subscription
     @sources ||= Source.includes(:subscription).all
     respond_with @sources
   end

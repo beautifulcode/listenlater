@@ -1,0 +1,18 @@
+<li class="source <%= source.state_classes.join(' ') %>" rel="<%= url_for(source) %>" data-image="<%= source.subscription_image_url %>" data-source-id="<%= source.id %>" data-user-id="<%= active_user.id %>">
+  <%= link_to source do %>
+    <div class="subscription-image">
+      <%= link_to image_tag(source.subscription_image_url), source %>
+    </div>
+    <h3 class="subscription-title">
+      <%= link_to source.subscription_title, subscription_sources_path(source.subscription) if source.subscription %>
+      <%= source.subscription_title unless source.subscription %>
+    </h3>
+    <h2 class="source-title">
+      <%= link_to source.title, source %>
+    </h2>
+    <span class="timeago" title="<%= source.created_at %>">
+      <%= source.created_at.to_s(:long) %>
+    </span>
+  <% end %>
+</li>
+

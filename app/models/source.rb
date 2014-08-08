@@ -6,6 +6,8 @@ class Source < ActiveRecord::Base
   belongs_to :subscription
   has_many :listens
 
+  acts_as_taggable
+
   scope :popular, :limit => 30
   scope :suggested, :limit => 30
   scope :recent, :limit => 30
@@ -22,6 +24,30 @@ class Source < ActiveRecord::Base
   def mark_as_listened
     self.listened ||= true
     save if listened_changed?
+  end
+
+  def subscription_title
+    subscription ? subscription.title : self.created_at.to_s(:long)
+  end
+
+  def subscription_image_url
+    subscription.try(:image_url) || default_image_url
+  end
+
+  def default_image_url
+    'subscriptions/default.gif'
+  end
+
+  def parse_duration
+
+  end
+
+  def parse_notes
+
+  end
+
+  def parse_homepage
+
   end
 
 end

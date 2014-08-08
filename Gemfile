@@ -18,6 +18,9 @@ gem 'jquery-rails'
 gem 'haml-rails'
 gem 'simple_form'
 gem 'chronic'
+gem 'httparty'
+#gem 'feedjira'
+gem 'acts-as-taggable-on'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -41,6 +44,15 @@ group :development, :test do
   gem "quiet_assets"
   gem "capistrano"
   gem 'rvm-capistrano'
+
+  gem 'bourbon'
+  gem 'neat'
+  gem 'bitters'
+  gem 'refills'
+
+  gem 'pry'
+  gem 'pry-rails'
+  #gem 'better-errors'
 
   # Can't use this as it conflicts with Listen Class
   # https://github.com/guard/listen

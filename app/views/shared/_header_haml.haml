@@ -1,0 +1,22 @@
+= render 'refills/navigation'
+-#%header.navigation
+  -#.navigation-wrapper
+    -#.container
+      -#%a.logo = Rails.configuration.application_name
+      -#%a.navigation-menu-button#js-mobile-menu
+        -#MENU
+
+      -#- if user_signed_in?
+        -#.nav
+          -#%ul#navigation-menu
+            -#%li= link_to 'Recent', '/sources/recent'
+            -#%li= link_to 'Popular', '/sources/popular'
+          -#.navigation-tools
+            -#%ul.nav
+              -#%li= link_to current_user.email, edit_user_registration_path
+              -#%li= link_to 'Sign out', destroy_user_session_path, :method => :delete
+      -#- else
+        -#.nav
+          -#%ul#navigation-menu
+            -#%li=link_to 'Sign in', new_user_session_path, :id => 'email_sign_in'
+            -#%li=link_to 'Sign up',new_registration_path(:user)

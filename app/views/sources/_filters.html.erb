@@ -1,0 +1,7 @@
+<div class="button-group">
+  <a class="button <%= 'active' unless params[:state].present? %>" href="?">All</a>
+  <a class="button <%= 'active' if params[:state] == 'new' %>" href="?state=new">New</a>
+  <a class="button <%= 'active' if params[:state] == 'listening' %>" href="?state=listening">Listening</a>
+  <a class="button <%= 'active' if params[:state] == 'listened' %>" href="?state=listened">Listened</a>
+  <a class="button <%= 'active' if params[:state] == 'starred' %>" href="?state=starred">Starred</a>
+</div>

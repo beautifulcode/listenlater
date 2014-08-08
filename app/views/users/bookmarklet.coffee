@@ -28,7 +28,7 @@ add_source = (source) ->
   sub = new Element('input', {'type': 'checkbox', 'name': 'source[subscription_url]', 'value': "", 'class': 'hidden subscription_url'})
 
   dt = $$('title').first()
-  t.value = dt.innerHTML if dt 
+  t.value = dt.innerHTML if dt
 
   li = new Element('li')
   #li.appendChild(s)
@@ -43,28 +43,28 @@ add_source = (source) ->
   ul.appendChild(li)
   already_found_mp3 = true
 
-#fix_position = (element) -> 
-#   if $(element) != null) -> 
-#      if(typeof window.innerHeight != 'undefined') -> 
-#         $(element).style.top = 
-#              Math.round(document.viewport.getScrollOffsets().top + 
+#fix_position = (element) ->
+#   if $(element) != null) ->
+#      if(typeof window.innerHeight != 'undefined') ->
+#         $(element).style.top =
+#              Math.round(document.viewport.getScrollOffsets().top +
 #              ((window.innerHeight - $(element).getHeight()))/2)+'px';
-#         $(element).style.left = 
-#              Math.round(document.viewport.getScrollOffsets().left + 
+#         $(element).style.left =
+#              Math.round(document.viewport.getScrollOffsets().left +
 #              ((window.innerWidth - $(element).getWidth()))/2)+'px';
 #      else
-#         $(element).style.top = 
-#              Math.round(document.body.scrollTop + 
+#         $(element).style.top =
+#              Math.round(document.body.scrollTop +
 #              (($$('body')[0].clientHeight - $(element).getHeight()))/2)+'px';
-#         $(element).style.left = 
-#              Math.round(document.body.scrollLeft + 
+#         $(element).style.left =
+#              Math.round(document.body.scrollLeft +
 #              (($$('body')[0].clientWidth - $(element).getWidth()))/2)+'px';
 
 
 add_subscription = (subscription_url) ->
-   $$('.subscription_url').value = subscription_url 
+   $$('.subscription_url').value = subscription_url
 
-  
+
 $$('a').each(link) ->
   add_source(link.href) if link.href.match('mp3')
   add_subscription(link.href) if link.href.match('rss' || 'atom')
@@ -75,9 +75,9 @@ $$('a').each(link) ->
 #       if p.value.match('mp3')
 #         e = /((http|ftp):\\\\\\\\/)?\\\\\\\\/?([^:\\\\\\\\/\\\\\\\\s]+)((\\\\\\\\/\\\\\\\\w+)*\\\\\\\\/)([\\\\\\\\w\\\\\\\\-\\\\\\\\.]+\\\\\\\\.[^#?\\\\\\\\s]+)(#[\\\\\\\\w\\\\\\\\-]+)?/
 #         matched = p.value.match(e)
-#         add_source(matched.first()) if matched          
-# 
-# 
+#         add_source(matched.first()) if matched
+#
+#
 
 f = new Element('form', {'action': ''+ll_domain+'/users/'+ll_userid+'/sources', 'method': 'post'})
 f.appendChild(ul)
@@ -93,9 +93,9 @@ container.addClassName('listenlater_active')
 
 $(f).observe 'submit', (e) ->
   new Ajax.Request f.action, {
-                    parameters: f.serialize(), 
-                    onSuccess: -> 
-                      container.innerHTML = "Saved for your later listening pleasure!" 
+                    parameters: f.serialize(),
+                    onSuccess: ->
+                      container.innerHTML = "Saved for your later listening pleasure!"
                   }
 
   e.stop()

@@ -3,7 +3,7 @@
   .title
     - if @source.subscription
       %b
-        = @source.subscription.title
+        = link_to @source.subscription.title, subscription_sources_path(@source.subscription)
         = "Untitled" if @source.subscription.title.blank?
       %span= @source.title
     - else
@@ -11,3 +11,4 @@
 
 %ul.playlist
   = render @sources
+= will_paginate @sources
