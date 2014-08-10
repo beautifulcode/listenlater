@@ -21,6 +21,13 @@ gem 'chronic'
 gem 'httparty'
 #gem 'feedjira'
 gem 'acts-as-taggable-on'
+gem 'bourbon'
+gem 'neat'
+gem 'bitters'
+gem 'refills'
+
+gem 'pry'
+gem 'pry-rails'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -45,13 +52,6 @@ group :development, :test do
   gem "capistrano"
   gem 'rvm-capistrano'
 
-  gem 'bourbon'
-  gem 'neat'
-  gem 'bitters'
-  gem 'refills'
-
-  gem 'pry'
-  gem 'pry-rails'
   #gem 'better-errors'
 
   # Can't use this as it conflicts with Listen Class
