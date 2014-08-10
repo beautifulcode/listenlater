@@ -1,0 +1,11 @@
+<h1><%= @category.title %> Subscriptions</h1>
+
+<ul class="subscription-list">
+  <% @subscriptions.each do |subscription| %>
+    <li class="subscription">
+      <div class="subscription-image"><%= image_tag subscription.image_url %></div>
+      <h2><%= link_to subscription.title, subscription %></h2>
+      <h3><%= subscription.description %></h3>
+    </li>
+  <% end %>
+</ul>

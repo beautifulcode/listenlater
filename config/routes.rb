@@ -1,5 +1,7 @@
 ListenLater::Application.routes.draw do
 
+  resources :categories
+
   resources :listens
 
   match '/', :controller => :pages, :action => :home
@@ -23,6 +25,10 @@ ListenLater::Application.routes.draw do
   end
 
   resources :subscriptions do
+    collection do
+      get 'recent'
+      get 'popular'
+    end
     resources :sources
   end
 
@@ -31,7 +37,7 @@ ListenLater::Application.routes.draw do
     resources :subscriptions
   end
 
-  resources :tags, only: :show
+  resources :tags, only: [:show, :index]
 
 
   root :to => 'pages#home'

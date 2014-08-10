@@ -3,12 +3,14 @@ class SourcesController < ApplicationController
   respond_to :json, :html
 
   def recent
-    @sources = current_user.recent_sources.paginate(:page => params[:page] || 1, :per_page => 20)
+    collection = current_user ? current_user.sources : Source
+    @sources = collection.recent.ordered.paginate(:page => params[:page] || 1, :per_page => 20)
     respond_with @sources
   end
 
   def popular
-    @sources = Source.popular.ordered.includes(:subscription)
+    collection = current_user ? current_user.sources : Source
+    @sources = collection.popular.ordered.includes(:subscription).paginate(:page => params[:page] || 1, :per_page => 20)
     respond_with @sources
   end
 
@@ -19,10 +21,9 @@ class SourcesController < ApplicationController
 
   def index
     @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id]
-    sources = @subscription.sources.ordered
-    sources = sources.where(state: params[:filter]) if params[:filter]
-    @sources = sources.paginate(:page => params[:page] || 1, :per_page => params[:per_page] || 20) if @subscription
-    @sources ||= Source.includes(:subscription).all
+    collection = @subscription ? @subscription.sources : Source
+    collection = collection.where(state: params[:filter]) if params[:filter]
+    @sources = collection.includes(:subscription).paginate(:page => params[:page] || 1, :per_page => params[:per_page] || 20)
     respond_with @sources
   end
 

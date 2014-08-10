@@ -1,18 +1,21 @@
 <header class="navigation">
   <div class="menu-wrapper">
-    <a href="javascript:void(0)" class="logo">
+    <a href="/" class="logo">
       <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png" alt="">
     </a>
     <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
     <div class="nav">
       <ul id="navigation-menu">
+        <%- if current_user %>
+          <li class="nav-link"><%= link_to "Listen", root_path %></li>
+        <% end %>
         <li class="nav-link"><%= link_to "Recent", recent_sources_path %></li>
         <li class="nav-link"><%= link_to "Popular", popular_sources_path %></li>
         <li class="nav-link"><%= link_to "About", '/welcome' %></li>
         <li class="nav-link more"><a href="javascript:void(0)">More</a>
           <ul class="submenu">
-            <li><a href="javascript:void(0)">Submenu Item</a></li>
-            <li><a href="javascript:void(0)">Another Item</a></li>
+            <li><%= link_to "Categories", categories_path %></li>
+            <li><%= link_to "Tags", tags_path %></li>
           </ul>
         </li>
 
@@ -30,8 +33,13 @@
       </div>
       -->
       <p>
-        <%= link_to 'Sign up', new_registration_path(:user), :class => 'sign-up' %>
-        <%= link_to 'Sign in', new_user_session_path, :class => 'sign-in' %>
+        <% if current_user %>
+          <%= link_to 'Sign out', destroy_user_session_path, :class => 'sign-in' %>
+          <%= link_to 'Profile', current_user, :class => 'sign-up' %>
+        <% else %>
+          <%= link_to 'Sign up', new_registration_path(:user), :class => 'sign-up' %>
+          <%= link_to 'Sign in', new_user_session_path, :class => 'sign-in' %>
+        <% end %>
       </p>
     </div>
   </div>

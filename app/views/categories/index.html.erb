@@ -1,0 +1,13 @@
+<h1>Available Categories</h1>
+<ul class="category-list">
+  <% @categories.each do |category| %>
+    <li class="category">
+      <h3>
+        <%= link_to category do %>
+          <%= image_tag category.icon, :width => 100, :height => 'auto' %>
+          <%= category.title %>
+        <% end %>
+      </h3>
+    </li>
+  <% end %>
+</ul>
