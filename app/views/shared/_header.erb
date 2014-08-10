@@ -34,7 +34,7 @@
       -->
       <p>
         <% if current_user %>
-          <%= link_to 'Sign out', destroy_user_session_path, :class => 'sign-in' %>
+          <%= link_to 'Sign out', destroy_user_session_path, :class => 'sign-in', :method => :delete %>
           <%= link_to 'Profile', current_user, :class => 'sign-up' %>
         <% else %>
           <%= link_to 'Sign up', new_registration_path(:user), :class => 'sign-up' %>

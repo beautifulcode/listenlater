@@ -2,12 +2,17 @@
   = link_to 'Play', @source.url, :class => 'play'
   .title
     - if @source.subscription
-      %b
+      %h4
         = link_to @source.subscription.title, subscription_sources_path(@source.subscription)
         = "Untitled" if @source.subscription.title.blank?
-      %span= @source.title
+      %h2= @source.title
     - else
-      %b= @source.title
+      %h2= @source.title
+
+    %span.timeago{:title => @source.created_at}
+      = @source.created_at.to_s(:long)
+      |
+      = "Listened" if @source.listens.count > 0
 
 %ul.playlist
   = render @sources
