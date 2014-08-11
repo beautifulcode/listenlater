@@ -1,5 +1,7 @@
 ListenLater::Application.routes.draw do
 
+  resources :series
+
   resources :categories
 
   resources :listens
