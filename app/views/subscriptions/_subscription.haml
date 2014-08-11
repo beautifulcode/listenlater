@@ -1,1 +1,4 @@
-%h2= link_to subscription.title, subscription_sources_path(subscription)
+.subscription-list-item
+  = image_tag subscription.image_url, class: 'subscription-image', height: 100, width: 'auto'
+  %h2= link_to subscription.title, subscription_sources_path(subscription)
+
