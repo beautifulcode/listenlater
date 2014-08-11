@@ -9,7 +9,8 @@ class Subscription < ActiveRecord::Base
   after_create :parse_meta
   after_destroy :unsubscribe
 
-  scope :recent, :limit => 30
+  scope :recent, order: {created_at: "DESC"}, limit: 30
+  scope :ordered, order: {name: "ASC"}
 
   acts_as_taggable
 
