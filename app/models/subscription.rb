@@ -18,6 +18,10 @@ class Subscription < ActiveRecord::Base
     sources.count
   end
 
+  def image_url
+    attribute(:image_url).present? ? attribute(:image_url) : default_image_url
+  end
+
   def default_image_url
     'subscriptions/default.gif'
   end
