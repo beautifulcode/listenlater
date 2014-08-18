@@ -36,7 +36,7 @@ module ListenLater
                                             } do |superfeedr|
       Superfeedr = superfeedr
       superfeedr.on_notification do |notification, id|
-        SubscriptionService.receive(notification, id)
+        SubscriptionService.new().receive(notification, id)
       end
 
     end

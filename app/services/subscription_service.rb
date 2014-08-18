@@ -7,46 +7,44 @@ class SubscriptionService
   end
 
   # XML
-  def self.receive(payload, id)
+  def receive(payload, id)
     Rails.logger.info("The feed #{payload} has been fetched")
-    subscription = Subscription.find(id)
-    payload.css('entry').each do |entry|
+    series = Series.find(id)
+
+    # Legacy data in superfeedr that points to sub vs seris
+    series ||= Subscription.find(id).series
+
+    series.sources << parse_sources(payload)
+    series.save
+
+  end
+
+  def parse_sources(payload)
+    #Parsers::Basic.new(payload)
+
+    parse_entries_from(payload).collect do |entry|
+      Source.new(extract_source_attrs(entry))
+    end
+
+  end
+
+  def parse_entries_from(payload)
+    payload.css('entry').collect do |entry|
       Rails.logger.info("$$$$ Received for #{entry.inspect} $$$$")
-      return unless entry.css('link[rel=enclosure]')
-      entry.css('link[rel=enclosure]').each do |attachment|
-        if attachment.attribute('type').to_s.include? 'audio'
-          Rails.logger.info("Creating source for #{entry.css('title')}")
-
-          source = subscription.sources.new({
-            :title => entry.css('title').first.text,
-            :url => attachment.attribute('href').to_s
-          })
-
-          source.user = subscription.user
-          source.save
-        end
-      end
+      entry unless entry.css('link[rel=enclosure]')
     end
   end
 
-  # JSON
-  #def self.receive(payload, id)
-  #  Rails.logger.info("The feed #{payload} has been fetched")
-  #  subscription = Subscription.find(id)
-  #  payload['items'].each do |item|
-  #    return unless item['attachments']
-  #    item['attachments'].each do |attachment|
-  #      if attachment['mimetype'].include? 'audio'
-  #        Rails.logger.info("Creating source for #{item['title']}")
-
-  #        subscription.sources.create({
-  #          :title => item['title'],
-  #          :url => attachment['permalinkUrl']
-  #        })
-  #      end
-  #    end
-  #  end
-  #end
+  def extract_source_attrs(entry)
+    data = {}
+    entry.css('link[rel=enclosure][type~=audio]').each do |attachment|
+      data.merge({
+        :title => entry.css('title').first.text,
+        :url => attachment.attribute('href').to_s
+      })
+    end
+    data
+  end
 
 
   def self.unsubscribe(url, id)
@@ -56,7 +54,6 @@ class SubscriptionService
   end
 
   def self.service
-    #@client ||= Superfeedr
     @client ||= ListenLater::Application::Superfeedr
   end
 
