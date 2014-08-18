@@ -1,11 +1,15 @@
-<h1><%= @category.title %> Subscriptions</h1>
+<%- content_for :page_title do %>
+  <%= @category.title %> Podcast Series | Listen Later Podcatcher | Podcast App
+<% end %>
+
+<h1><%= @category.title %> Series</h1>
 
 <ul class="subscription-list">
-  <% @subscriptions.each do |subscription| %>
+  <% @series.each do |series| %>
     <li class="subscription">
-      <div class="subscription-image"><%= image_tag subscription.image_url %></div>
-      <h2><%= link_to subscription.title, subscription %></h2>
-      <h3><%= subscription.description %></h3>
+      <div class="subscription-image"><%= image_tag series.image_url %></div>
+      <h2><%= link_to series.title, series %></h2>
+      <h3><%= series.description %></h3>
     </li>
   <% end %>
 </ul>

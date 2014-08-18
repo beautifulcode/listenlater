@@ -2,7 +2,7 @@ ListenLater::Application.routes.draw do
 
   resources :series do
     resources :subscriptions, only: :create
-    resources :sources, only: :index
+    resources :sources, only: [:index, :show]
   end
 
   resources :categories, only: [:show, :index]

@@ -25,7 +25,8 @@ class SeriesController < ApplicationController
   end
 
   def show
-    @series = Series.find(params[:id])
+    @series = Series.find(params[:id], include: :sources)
+    @sources = @series.sources.paginate({page: params[:page] || 1, per_page: params[:per_page] || 50})
     respond_with @series
   end
 

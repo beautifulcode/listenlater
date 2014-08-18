@@ -2,7 +2,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @subscriptions = @category.subscriptions
+    @series = @category.series
   end
 
   def index

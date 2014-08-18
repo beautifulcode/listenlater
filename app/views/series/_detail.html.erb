@@ -1,12 +1,11 @@
 <div class="side-image">
-  <div class="images-wrapper" style="background-image: url('<%= @subscription.image_url %>')"></div>
+  <div class="images-wrapper" style="background-image: url('<%= @series.image_url %>')"></div>
     <div class="content">
-      <%- @subscription.tag_list.each do |tag| %>
+      <%- @series.tag_list.each do |tag| %>
         <h4><%= link_to tag, tag_path(:id => tag) %></h4>
       <% end %>
-      <h1><%= @subscription.title %></h1>
-      <p><%= @subscription.description %></p>
-      <%= render 'filters' %>
+      <h1><%= @series.title %></h1>
+      <p><%= @series.description %></p>
   </div>
 </div>
 

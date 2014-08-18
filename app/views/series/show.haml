@@ -1,4 +1,6 @@
-.hero-unit
-  %h1= @series.title
+= render 'series/detail' if @series
 
-= link_to "View Sources", series_sources_path(@series)
+%ul.playlist
+  = render @sources
+
+= will_paginate @sources

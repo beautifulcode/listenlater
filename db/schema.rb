@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140811182942) do
+ActiveRecord::Schema.define(:version => 20140816073515) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -26,7 +26,10 @@ ActiveRecord::Schema.define(:version => 20140811182942) do
     t.integer  "subscription_count"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.string   "slug"
   end
+
+  add_index "categories", ["slug"], :name => "index_categories_on_slug", :unique => true
 
   create_table "listens", :force => true do |t|
     t.integer  "source_id"
@@ -46,7 +49,10 @@ ActiveRecord::Schema.define(:version => 20140811182942) do
     t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.string   "slug"
   end
+
+  add_index "series", ["slug"], :name => "index_series_on_slug", :unique => true
 
   create_table "sources", :force => true do |t|
     t.integer  "user_id"
@@ -59,8 +65,10 @@ ActiveRecord::Schema.define(:version => 20140811182942) do
     t.text     "xml"
     t.text     "summary"
     t.string   "duration"
+    t.string   "slug"
   end
 
+  add_index "sources", ["slug"], :name => "index_sources_on_slug", :unique => true
   add_index "sources", ["user_id"], :name => "index_sources_on_user_id"
 
   create_table "subscriptions", :force => true do |t|
