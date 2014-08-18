@@ -9,11 +9,13 @@ class Series < ActiveRecord::Base
   after_create :parse_meta
   after_destroy :unsubscribe
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
 
   scope :ordered, :order => "title ASC"
 
   def image_url
-    attributes[:image_url].blank? ? default_image_url : attributes[:image_url]
+    attributes['image_url'].blank? ? default_image_url : attributes['image_url']
   end
 
   def default_image_url

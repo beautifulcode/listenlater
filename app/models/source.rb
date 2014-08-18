@@ -9,6 +9,10 @@ class Source < ActiveRecord::Base
 
   acts_as_taggable
 
+  extend FriendlyId
+  friendly_id :title, use: :slugged
+
+
   scope :popular, :limit => 30
   scope :suggested, :limit => 30
   scope :recent, :limit => 30
@@ -41,18 +45,6 @@ class Source < ActiveRecord::Base
 
   def series_title
     series.try(:title)
-  end
-
-  def parse_duration
-
-  end
-
-  def parse_notes
-
-  end
-
-  def parse_homepage
-
   end
 
 end
