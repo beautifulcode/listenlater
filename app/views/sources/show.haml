@@ -1,5 +1,5 @@
-.player
-  = link_to 'Play', @source.url, :class => 'play'
+.player{style: "background-image: url('/assets/#{@source.image_url}');"}
+  = link_to '', @source.url, :class => 'play'
   .title
     - if @source.subscription
       %b

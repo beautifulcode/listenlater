@@ -14,14 +14,16 @@ class SubscriptionsController < ApplicationController
   end
 
   def create
-    @subscription = Subscription.new(params[:subscription])
+    @subscription = Subscription.new
+    @subscription.series = Series.find(params[:series_id]) if params[:series_id].present?
+    @subscription.series = Series.create(title: params[:title], url: params[:url]) if params[:url].present?
     @subscription.user = current_user
     @subscription.save!
     respond_with @subscription
   end
 
   def index
-    @subscriptions = Subscription.all
+    @subscriptions = Subscription.all.includes(:series)
     respond_with @subscriptions
   end
 

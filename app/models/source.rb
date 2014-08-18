@@ -4,6 +4,7 @@ class Source < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :subscription
+  has_one :series, :through => :subscription
   has_many :listens
 
   acts_as_taggable
@@ -30,12 +31,16 @@ class Source < ActiveRecord::Base
     subscription ? subscription.title : self.created_at.to_s(:long)
   end
 
-  def subscription_image_url
-    subscription.try(:image_url) || default_image_url
+  def image_url
+    default_image_url
   end
 
   def default_image_url
-    'subscriptions/default.gif'
+    'series/default.gif'
+  end
+
+  def series_title
+    series.try(:title)
   end
 
   def parse_duration

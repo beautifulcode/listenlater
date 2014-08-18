@@ -1,13 +1,15 @@
 ListenLater::Application.routes.draw do
 
-  resources :series
+  resources :series do
+    resources :subscriptions, only: :create
+    resources :sources, only: :index
+  end
 
-  resources :categories
+  resources :categories, only: [:show, :index]
+  resources :listens, only: [:create]
 
-  resources :listens
 
   match '/', :controller => :pages, :action => :home
-
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } do
     delete '/users/disconnect/:provider',
       :to => 'users#disconnect_omniauth_provider',
@@ -27,10 +29,6 @@ ListenLater::Application.routes.draw do
   end
 
   resources :subscriptions do
-    collection do
-      get 'recent'
-      get 'popular'
-    end
     resources :sources
   end
 

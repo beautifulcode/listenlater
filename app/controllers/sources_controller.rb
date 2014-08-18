@@ -20,8 +20,11 @@ class SourcesController < ApplicationController
   end
 
   def index
-    @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id]
-    collection = @subscription ? @subscription.sources : Source
+    @series = Series.find(params[:series_id]) if params[:series_id].present?
+    @subscription = Subscription.find(params[:subscription_id]) if params[:subscription_id].present?
+    collection = @subscription.sources if @subscription
+    collection ||= @series.sources if @series
+    collection ||= Source
     collection = collection.where(state: params[:filter]) if params[:filter]
     @sources = collection.includes(:subscription).paginate(:page => params[:page] || 1, :per_page => params[:per_page] || 20)
     respond_with @sources

@@ -1,3 +1,4 @@
 <h2>
   <%= link_to series.title, series_sources_path(series) %>
+  <%= link_to "Subscribe", series_subscriptions_path(series), :method => :post, :remote => true %>
 </h2>

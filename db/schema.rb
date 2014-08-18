@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140810015951) do
+ActiveRecord::Schema.define(:version => 20140811182942) do
 
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(:version => 20140810015951) do
     t.string   "start_time"
     t.string   "finish_time"
     t.string   "client"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  create_table "series", :force => true do |t|
+    t.string   "title"
+    t.string   "url"
+    t.text     "description"
+    t.string   "image_url"
+    t.integer  "category_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -62,6 +72,7 @@ ActiveRecord::Schema.define(:version => 20140810015951) do
     t.string   "image_url"
     t.text     "description"
     t.integer  "category_id"
+    t.integer  "series_id"
   end
 
   add_index "subscriptions", ["user_id"], :name => "index_subscriptions_on_user_id"

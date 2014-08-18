@@ -1,24 +1,21 @@
 
 require 'spec_helper'
 
-describe "creating a subscription" do
+describe "subscribing to an existing series" do
   before do
     stub_subscription_service
     @user = FactoryGirl.create :user
-    sign_in(@user)
-    visit new_subscription_path
+    @series = FactoryGirl.build :series
+#    sign_in(@user)
+    visit '/series'
   end
 
   context "with valid input" do
 
-    before do
-      fill_in 'Title', :with => 'Awesome Podcast Number 1'
-      fill_in 'Url', :with => 'http://something.com/feed.rss'
-    end
-
-    it "creates a subscription locally" do
-      click_button 'Create'
+    it "creates a series & subscription locally" do
+      click_link "Subscribe"
       Subscription.count.should eq(1)
+      Subscription.last.should eql(Series.last)
     end
 
     xit "sends a request to SubscriptionService" do

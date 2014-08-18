@@ -5,7 +5,16 @@ class Series < ActiveRecord::Base
 
   acts_as_taggable
 
+  after_create :subscribe
   after_create :parse_meta
+  after_destroy :unsubscribe
+
+
+  scope :ordered, :order => "title ASC"
+
+  def image_url
+    attributes[:image_url].blank? ? default_image_url : attributes[:image_url]
+  end
 
   def default_image_url
     'series/default.gif'
@@ -44,6 +53,17 @@ class Series < ActiveRecord::Base
 
     end
   end
+
+
+  protected
+
+    def subscribe
+     SubscriptionService.subscribe(url, id)
+    end
+
+    def unsubscribe
+     SubscriptionService.unsubscribe(url, id)
+    end
 
 
 end

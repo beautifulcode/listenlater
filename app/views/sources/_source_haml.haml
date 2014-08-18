@@ -1,9 +1,0 @@
-%li.source{:class => source.state_classes, :rel => url_for(source), :'data-source-id' => source.id, :'data-user-id' => active_user.id }
-  = link_to source do
-      .subscription-image
-        = source.subscription_image
-      %h3.subscription-title
-        = source.subscription_title
-      %h2.source-title
-        = source.title
-    %span= source.created_at.to_s(:short)
