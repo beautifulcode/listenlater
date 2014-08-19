@@ -60,11 +60,11 @@ class Series < ActiveRecord::Base
   protected
 
     def subscribe
-     SubscriptionService.subscribe(url, id)
+      SubscriptionService.subscribe(url, id)
     end
 
     def unsubscribe
-     SubscriptionService.unsubscribe(url, id)
+      SubscriptionService.unsubscribe(url, id)
     end
 
 

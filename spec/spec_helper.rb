@@ -62,8 +62,7 @@ RSpec.configure do |config|
            #to_return(:status => 200, :body => "", :headers => {})
 
 
-    visit '/'
-    click_link 'email_sign_in'
+    visit '/users/sign_in'
     fill_in 'Email', :with => user.email
     fill_in 'user_password', :with => 'abc123'
     click_button 'Sign in'
