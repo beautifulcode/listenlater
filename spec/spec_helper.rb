@@ -43,6 +43,9 @@ RSpec.configure do |config|
 
   config.include(Capybara, :type => :integration)
   config.include Capybara::DSL
+  config.include RSpec::Rails::RequestExampleGroup, type: :feature
+
+  config.infer_spec_type_from_file_location!
 
   def logout
 

@@ -19,7 +19,9 @@ describe "subscribing to an existing series" do
       Subscription.last.series.should eql(Series.last)
     end
 
-    xit "sends a request to SubscriptionService" do
+    it "doesn't send a request to SubscriptionService" do
+      expect(SubscriptionService).to_not receive(:new)
+      click_link "Subscribe"
     end
 
     xit "receives a response from SubscriptionService" do
