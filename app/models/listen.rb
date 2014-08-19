@@ -7,7 +7,7 @@ class Listen < ActiveRecord::Base
   after_create :mark_source_as_listened
 
   def mark_source_as_listened
-    source.mark_as_listened
+    source.mark_as_listened if source
   end
 
 end

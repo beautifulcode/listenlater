@@ -6,7 +6,7 @@ ListenLater::Application.routes.draw do
   end
 
   resources :categories, only: [:show, :index]
-  resources :listens, only: [:create]
+  resources :listens, only: [:create, :show]
 
 
   match '/', :controller => :pages, :action => :home

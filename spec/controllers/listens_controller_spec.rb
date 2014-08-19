@@ -11,7 +11,10 @@ describe ListensController do
 
     describe "POST to :create" do
       it "can route a POST request, but will 401" do
-        post :create, :listen => {:user_id => @user.to_param, :source_id => @source.to_param}, :format => :json
+        post :create, :listen => {
+                          :user_id => @user.to_param,
+                          :source_id => @source.to_param},
+                          :format => :json
         Listen.count == 0
       end
     end
@@ -67,7 +70,7 @@ describe ListensController do
     {:source_id => @source.to_param, :user_id => @user.to_param}
   end
 
-  def invalid_listen_params 
+  def invalid_listen_params
     {}
   end
 
