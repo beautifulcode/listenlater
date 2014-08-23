@@ -93,6 +93,8 @@ GEM
     faraday (0.8.4)
       multipart-post (~> 1.1)
     ffi (1.2.1)
+    font-awesome-sass (4.1.0)
+      sass (~> 3.2)
     friendly_id (4.0.10.1)
       activerecord (>= 3.0, < 4.0)
     haml (3.2.0.rc.2)
@@ -270,6 +272,7 @@ DEPENDENCIES
   devise
   factory_girl_rails
   fakeweb
+  font-awesome-sass
   friendly_id
   haml (~> 3.2.0.rc.2)
   haml-rails

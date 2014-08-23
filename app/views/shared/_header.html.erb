@@ -1,7 +1,8 @@
 <header class="navigation">
   <div class="menu-wrapper">
     <a href="/" class="logo">
-      <img src="https://raw.github.com/Magnus-G/Random/master/placeholder_logo_1.png" alt="">
+      <%= icon 'volume-up' %>
+      ListenLater
     </a>
     <p class="navigation-menu-button" id="js-mobile-menu">MENU</p>
     <div class="nav">
@@ -9,14 +10,14 @@
         <%- if current_user %>
           <li class="nav-link"><%= link_to "Listen", root_path %></li>
         <% end %>
-        <li class="nav-link"><%= link_to "Recent Audio", recent_sources_path %></li>
-        <li class="nav-link"><%= link_to "Browse Categories", categories_path %></li>
-        <li class="nav-link"><%= link_to "Get Bookmarklet", '/bookmarklet' %></li>
-        <li class="nav-link more"><a href="javascript:void(0)">More</a>
+        <li class="nav-link"><%= icon 'list-ul' %> <%= link_to "Play Queue", recent_sources_path %></li>
+        <li class="nav-link"><%= icon 'folder-open-o' %> <%= link_to "Browse Categories", categories_path %></li>
+        <li class="nav-link"><%= icon 'bookmark-o' %> <%= link_to "Get Bookmarklet", '/bookmarklet' %></li>
+        <li class="nav-link more"><%= icon 'plus-square-o' %> <a href="javascript:void(0)">More</a>
           <ul class="submenu">
-            <li><%= link_to "Popular Series", popular_sources_path %></li>
-            <li><%= link_to "Sort By Tags", tags_path %></li>
-            <li><%= link_to "About", '/welcome' %></li>
+            <li><%= icon 'star' %> <%= link_to "Popular Series", popular_sources_path %></li>
+            <li><%= icon 'tags' %> <%= link_to "Sort By Tags", tags_path %></li>
+            <li><%= icon 'question' %> <%= link_to "About", '/welcome' %></li>
           </ul>
         </li>
 

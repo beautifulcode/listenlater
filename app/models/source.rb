@@ -36,7 +36,7 @@ class Source < ActiveRecord::Base
   end
 
   def image_url
-    default_image_url
+    series.try(:image_url) || default_image_url
   end
 
   def default_image_url
