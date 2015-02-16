@@ -16,6 +16,8 @@ class SeriesController < ApplicationController
   def create
     @series = Series.new(params[:series])
     @series.save!
+    #TODO
+    # Background this
     @subscription = @series.subscriptions.create(:user => current_user).save if current_user
     respond_with @series
   end

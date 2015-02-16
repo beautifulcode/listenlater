@@ -23,6 +23,7 @@ gem 'httparty'
 gem 'acts-as-taggable-on'
 gem 'friendly_id', :branch => '4.0-stable'
 gem 'font-awesome-sass'
+gem 'smarter_csv'
 
 # Gems used only for assets and not required
 # in production environments by default.

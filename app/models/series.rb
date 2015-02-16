@@ -1,7 +1,7 @@
 class Series < ActiveRecord::Base
   attr_accessible :title, :url, :image_url, :description
   has_many :subscriptions
-  has_many :sources, through: :subscriptions
+  has_many :sources
 
   acts_as_taggable
 

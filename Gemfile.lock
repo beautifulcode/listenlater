@@ -237,6 +237,7 @@ GEM
       actionpack (~> 3.0)
       activemodel (~> 3.0)
     slop (3.6.0)
+    smarter_csv (1.0.19)
     sprockets (2.1.3)
       hike (~> 1.2)
       rack (~> 1.0)
@@ -297,5 +298,6 @@ DEPENDENCIES
   sass
   sass-rails (~> 3.2.3)
   simple_form
+  smarter_csv
   uglifier (>= 1.0.3)
   will_paginate
