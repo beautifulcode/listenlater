@@ -6,6 +6,6 @@ class CategoriesController < ApplicationController
   end
 
   def index
-    @categories = Category.ordered.includes(:subscriptions)
+    @categories = Category.ordered.includes(:series)
   end
 end

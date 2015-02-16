@@ -1,3 +1,5 @@
+require 'SecureRandom'
+
 class Series < ActiveRecord::Base
   attr_accessible :title, :url, :image_url, :description
   has_many :subscriptions
@@ -5,6 +7,7 @@ class Series < ActiveRecord::Base
 
   acts_as_taggable
 
+  before_create :generate_uid
   after_create :subscribe
   after_create :parse_meta
   after_destroy :unsubscribe
@@ -56,15 +59,21 @@ class Series < ActiveRecord::Base
     end
   end
 
+  def generate_uid
+    uid = SecureRandom.hex(6)
+    while self.uid.blank? && !Series.find_by_uid(uid)
+      self.uid = uid
+    end
+  end
 
   protected
 
     def subscribe
-      SubscriptionService.subscribe(url, id)
+      SubscriptionService.subscribe(url, uid)
     end
 
     def unsubscribe
-      SubscriptionService.unsubscribe(url, id)
+      SubscriptionService.unsubscribe(url, uid)
     end
 
 

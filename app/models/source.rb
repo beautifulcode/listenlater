@@ -2,10 +2,12 @@ class Source < ActiveRecord::Base
 
   attr_accessible :title, :url
 
-  belongs_to :user
-  belongs_to :subscription
-  has_one :series, :through => :subscription
+  belongs_to :series
+  has_many :subscriptions, :through => :series
+  has_many :users, :through => :subscriptions
+
   has_many :listens
+  has_many :listeners, :through => :listens, :source => :user
 
   acts_as_taggable
 
