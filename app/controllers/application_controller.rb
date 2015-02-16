@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
-  has_mobile_fu
+  #has_mobile_fu
 
   def after_sign_in_path_for(resource)
     request.env['omniauth.origin'] || stored_location_for(resource) || welcome_or_home
@@ -32,4 +32,5 @@ class ApplicationController < ActionController::Base
   def per_page
     params[:per_page].present? ? params[:per_page].to_i : 20
   end
+
 end

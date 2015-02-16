@@ -26,6 +26,7 @@ class SourcesController < ApplicationController
     collection ||= @series.sources if @series
     collection ||= Source
     collection = collection.where(state: params[:filter]) if params[:filter]
+    collection = collection.order("id DESC")
     @sources = collection.includes(:subscription).paginate(:page => params[:page] || 1, :per_page => params[:per_page] || 20)
     respond_with @sources
   end
