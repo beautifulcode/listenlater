@@ -9,7 +9,7 @@ describe SourcesController do
 
     before do
       @user = FactoryGirl.create :user
-      @source = FactoryGirl.create :source, :user => @user
+      @source = FactoryGirl.create :source
       logout
     end
 
@@ -56,17 +56,12 @@ describe SourcesController do
         Source.count.should == 1
       end
 
-      it "creates a source for the current user" do
-        post :create, :source => valid_source_params
-        Source.last.user == User.last
-      end
+      describe "callback from superfeedr with series uid" do
 
-      describe "callback from superfeedr with subscription id and no user" do
-
-        it "creates a source for the current user" do
-          subscription = FactoryGirl.create :subscription, :user => @user
-          post :create, :source => valid_source_params.except(:user_id).merge(:subscription_id => subscription.id)
-          Source.last.user == User.last
+        it "creates a source for that series" do
+          series = FactoryGirl.create :series
+          post :create, :source => valid_source_params.merge(:series_id => series.uid)
+          expect(series.reload.sources.size).to eq(1)
         end
 
       end

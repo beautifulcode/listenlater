@@ -1,5 +1,5 @@
 .hero-unit
-  %h1= @subscription.title
+  %h1= @subscription.series.title
   %p #{@subscription.unlistened_source_count} New Sources of #{@subscription.sources.count}
 
-= link_to "View Sources", subscription_sources_path(@subscription)
+= link_to "View Sources", series_sources_path(@subscription.series)

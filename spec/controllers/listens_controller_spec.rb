@@ -4,7 +4,7 @@ describe ListensController do
 
   before do
     @user = FactoryGirl.create :user
-    @source = FactoryGirl.create :source, :user => @user
+    @source = FactoryGirl.create :source
   end
 
   context "when logged out" do

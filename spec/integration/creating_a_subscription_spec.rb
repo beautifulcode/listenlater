@@ -42,21 +42,20 @@ describe "subscribing to an new series" do
 
   context "with valid input" do
 
-    it "creates a series & subscription locally" do
-
+    before do
       fill_in "Title", :with => "New Podcast"
       fill_in "Url", :with => "http://test.com"
       click_button "Create Series"
+    end
 
+    it "creates a series & subscription locally" do
       Series.count.should eq(1)
       Subscription.count.should eq(1)
       Subscription.last.series.should eql(Series.last)
-      expect(SubscriptionService).to have_received(:subscribe)
     end
 
-    it "doesn't send a request to SubscriptionService" do
-      expect(SubscriptionService).to receive(:subscribe)
-      click_button "Create Series"
+    it "sends a request to SubscriptionService" do
+      expect(SubscriptionService).to have_received(:subscribe).with("http://test.com", Series.last.uid)
     end
 
   end
