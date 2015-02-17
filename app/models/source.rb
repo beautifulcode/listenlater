@@ -19,8 +19,8 @@ class Source < ActiveRecord::Base
   scope :suggested, :limit => 30
   scope :recent, :limit => 30
   scope :ordered, :order => "created_at DESC"
-  scope :unlistened, :conditions => {:listened => false}
-  scope :listened, :conditions => {:listened => true}
+  scope :unlistened
+  scope :listened, lambda{ joins(:listens) }
 
   def state_classes
     class_array = []
@@ -31,6 +31,10 @@ class Source < ActiveRecord::Base
   def mark_as_listened
     self.listened ||= true
     save if listened_changed?
+  end
+
+  def listened
+    listens.all.size > 0
   end
 
   def subscription_title
